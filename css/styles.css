@@ -1,0 +1,140 @@
+.navbar{
+ height: 50px;   
+}
+
+.container {
+  width: 950px;
+  max-width: none !important;
+  height: auto;
+  background-color: #fff;
+}
+
+#navbar{
+    width:700px;
+    height: 75px;
+    margin-left: 125px;
+    padding-top: 5px;
+}
+
+#navbarlogo {
+    height:75px;
+    width: auto;
+}
+
+#navbar-left {
+    float:left; 
+}
+
+#navbar-right {
+    height:75px; 
+    float:right;
+    padding-top: 25px;
+    width: 400px;
+    text-align: center;
+    
+}
+
+#navbar-right, a{
+    padding-left: 15px;
+    font-size: 1.2em;
+    color: #008000;
+    
+}
+
+#navbar-right,a:hover{
+    color:black   
+}
+#about{
+    width:700px;
+    height:385px;
+    margin-top:25px;
+    margin-left:125px;
+    border-bottom: 1px solid black;
+    
+}
+
+#statement{
+    float: left;
+    padding-left: 15px;
+    padding-right: 15px;
+    pading-bottom: 15px;
+    width:475px;
+    height: 375px;
+   
+}
+
+#centerheader{
+    text-align: center;
+    color:#008000;
+}
+
+#aboutstatement{
+    
+}
+
+#abouti {
+    height:200px;
+    margin-left: 12px;
+    margin-top: 87.5px;
+    margin-bottom: 87.5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#topics{
+    height:345px;  
+    margin-left:125px;
+}
+
+.language {
+    height: 115px;
+    width:auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #008000;
+}
+
+#row{  
+    width:700px;
+    font-size: 3.5em;
+    padding-left: 70px;
+    color:#008000;
+}
+
+#greenbutton{
+    background-color:#008000 !important;
+    color: #fff !important;
+}
+
+#greenbutton:hover{
+    
+    color: black !important;
+}
+
+#indexcontent{
+    width:605px;
+    height: 600px;
+    margin-left: 125px;
+    
+}
+#signupcontent{
+    width:605px;
+    margin-left: 125px;
+}
+
+#footer{
+  border-radius: 5px;
+  margin-left: 125px;
+  width:605px;
+}
+
+#aboutbutton{
+    margin-left:500px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    color:#008000 !important;
+}
+
+#indexstartlogo{
+    width:595px;
+    margin-top: 25px;
+}
