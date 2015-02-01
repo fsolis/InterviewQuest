@@ -1,6 +1,6 @@
 <?php
     session_start(); 
-	//require_once'dbConn.php';
+	require_once'dbConn.php';
 ?>
 
 <!DOCTYPE html>
@@ -34,10 +34,10 @@
           <div id="navbar-right">
             <?php
                 if(isset($_SESSION['loggedin'])){
-                    echo " Welcome,".$_SESSION['firstName'];
+                    echo " Welcome, ".$_SESSION['firstName'];
                     echo "<a href=\"logout.php\"><button type=\"button\" id=\"greenbutton\" class=\"btn btn-default btn-lg\"> Sign Out</button></a>";
                 }else{
-                    echo "<a href=\"signin.php\"><button type=\"button\" id=\"greenbutton\" class=\"btn btn-default btn-lg\">Sign In</button></a>";
+                    echo "<button href=\"#login\" data-toggle=\"modal\" type=\"button\" id=\"greenbutton\" class=\"btn btn-default btn-lg\">Sign In</button>";
                     echo "<a href=\"signup.php\"><button type=\"button\" id=\"greenbutton\" class=\"btn btn-default btn-lg\">Sign Up</button></a>";
                }
             ?>
@@ -51,10 +51,52 @@
       <div id="footer">
             <a href="about.php"> <button type="button" id="aboutbutton" class="btn btn-default btn-lg">About</button></a>
       </div>
+        
+        <!-- Start Login Modal -->
+		<div class="modal fade" id="login" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form class="form-horizontal">
+						<div class="modal-header">
+							<h3>Login</h3>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<label for="username" class="col-lg-2 control-label">Username</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="password" class="col-lg-2 control-label">Password</label>
+								<div class="col-lg-10">
+									<input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+								</div>
+							</div>
+							
+							<div class"form-group">
+								<div class="col-lg-10 text-center">
+									<a class="btn btn-primary" onclick="attemptLogin()">Login</a>
+									<div >
+										<h6 id="errorcode" color="red"></h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<a class="btn btn-warning" data-dismiss="modal">Cancel</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- End Login Modal -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <!--Include javascript for this page-->
+    <script src="js/login.js"></script>
   </body>
 </html>

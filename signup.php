@@ -1,4 +1,5 @@
 <?php
+    require_once 'dbConn.php';
     session_start(); 
 ?>
 
@@ -28,7 +29,7 @@
     <div class="container">
       <div id="navbar">
           <div id="navbar-left">
-            <a href="#"><img id="navbarlogo" src="images/indexLogo.png"></a>
+            <a href="index.php"><img id="navbarlogo" src="images/indexLogo.png"></a>
           </div>
           <div id="navbar-right">
             <?php
@@ -43,36 +44,75 @@
       </div>
       <br>
       <div id="signupcontent"> 
-          <form>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+          <form method="post">
+              <div id="usernamefeedback" class="form-group">
+                <label for="exampleInputEmail1">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required placeholder="Username">
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control" id="password" name="password" required placeholder="Password">
               </div>
               <div class="form-group">
-                <label for="exampleInputFile">File input</label>
-                <input type="file" id="exampleInputFile">
-                <p class="help-block">Example block-level help text here.</p>
+                <label for="exampleInputEmail1">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" required placeholder="First Name">
               </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox"> Check me out
-                </label>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" required placeholder="Last Name">
               </div>
-              <button type="submit" class="btn btn-default">Submit</button>
+              <div id="emailfeedback" class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required placeholder="email@email.com">
+              </div>
+              <button  id="submitbutton" type="button" onclick="submitUser()" class="btn btn-primary">Submit</button>
         </form>
       </div>
         
-      <div id="footer">
+      <div id="signupfooter">
             <a href="about.php"> <button type="button" id="aboutbutton" class="btn btn-default btn-lg">About</button></a>
       </div>
 
+    
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="success" aria-hidden="true" id="successModal" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="Success">User Successfully Registered</h5>
+                    </div>
+                    <div class="modal-body">
+                        <h3 id="welcomeMessage"></h3>
+                        <p>Now that you have an account you will be able to help InterviewQuest become better by submitting your own questions, reporting questions that are incorrect, as well as more upcomeing features! Now let the journey continue.</p>
+                    </div>
+                     <div class="modal-footer">
+                        <a href="index.php" #id="greenbutton" type="button" class="btn btn-primary">Continue</a>
+                      </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="failed" aria-hidden="true" id="failedModal" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="failed">Unable to complete registration</h5>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Uh Oh...</h3>
+                        <p>There seems to be a problem completing your registration, please try again. Please make sure you are not already logged in and that your information is correct.</p>
+                    </div>
+                     <div class="modal-footer">
+                        <button #id="greenbutton" type="button" class="btn btn-primary" dismiss="modal">Try Again</button>
+                      </div>
+                </div>
+            </div>
+        </div>
+        
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <!--Include javascript for this page -->
+    <script src="js/signup.js"></script>
   </body>
 </html>
