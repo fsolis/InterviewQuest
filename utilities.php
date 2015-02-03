@@ -14,8 +14,7 @@
        } catch (Exception $e){
             echo 'Error Checking Username';
        }
-    }
-    if ($_GET['type']=='checkemail') {
+    } else if ($_GET['type']=='checkemail') {
         try{
            $sql = "SELECT * FROM Users WHERE email = :email";
            $stmt = $dbConn -> prepare($sql);
@@ -27,9 +26,7 @@
         } catch (Exception $e) {
             echo 'Could not Check email';   
         }
-    }
-
-    if ($_POST['type']=='register') {
+    }else if ($_POST['type']=='register') {
         
         try{
             if(isset($_SESSION['loggedin'])){
@@ -50,9 +47,7 @@
                // echo 'Unable to register user, please verify that the username or email are valid.';
         }
             
-    }
-
-    if ($_POST['type']=='login') {
+    } else if ($_POST['type']=='login') {
         
         try{
             if(isset($_SESSION['loggedin'])){
@@ -81,9 +76,7 @@
                // echo 'Unable to register user, please verify that the username or email are valid.';
         }
             
-    }
-
-    if ($_GET['type']=='checkLanguage') {
+    } else if ($_GET['type']=='checkLanguage') {
         
         try{
                 $sql = "SELECT * from Languages WHERE languageName = :languageName";
@@ -99,9 +92,7 @@
             echo $e;
                // echo 'Unable to register user, please verify that the username or email are valid.';
         }
-    }
-            
-    if ($_GET['type']=='submitNewLanguage') {
+    } else if ($_GET['type']=='submitNewLanguage') {
         if(!isset($_SESSION['loggedin'])){
                 echo "1";
         }else {
@@ -118,17 +109,32 @@
             
         }
              
-    }
-
-    if ($_GET['type'] == 'singleAnswerQuestion') {
+    }else if ($_POST['type'] == 'singleAnswerQuestion') {
         if(!isset($_SESSION['loggedin'])) {
             echo "1";   
         } else {
          
             try{
-                $sql = "INSERT INTO Questions (languageID, question, answer1, type, correctAnswer, userID) VALUES (:languageID, :question, :answer1, :type, :correctAnswer, :userID)";
+                $sql = "INSERT INTO Questions (languageID, question, answer1, type, correctAnswer, userID) VALUES (:languageID, :question, :answer1, 'SA', '1', :userID)";
                 $stmt = $dbConn -> prepare($sql);
-                $stmt -> execute(array(":languageID"=> $_GET['languageId'], ":question"=>$_GET['question']));
+                $stmt -> execute(array(":languageID"=> $_POST['languageId'], ":question"=>$_POST['question'], ":answer1"=>$_POST['answer'], ":userID"=>$_SESSION['userID']));
+                echo "0";
+                
+            } catch (Exception $e) {
+               echo $e;   
+            }
+            
+        }
+    } else if ($_POST['type'] == 'multipleChoiceQuestion') {
+        if(!isset($_SESSION['loggedin'])) {
+            echo "1";   
+        } else {
+         
+            try{
+                $sql = "INSERT INTO Questions (languageID, question, answer1, answer2, answer3, answer4, type, correctAnswer, userID) VALUES (:languageID, :question, :answer1, :answer2, :answer3, :answer4, 'MC', :correctAnswer, :userID)";
+                $stmt = $dbConn -> prepare($sql);
+                $stmt -> execute(array(":languageID"=> $_POST['languageId'], ":question"=>$_POST['question'], ":answer1"=>$_POST['answer1'],":answer2"=>$_POST['answer2'],":answer3"=>$_POST['answer3'],":answer4"=>$_POST['answer4'],":correctAnswer"=>$_POST['correctAnswer'], ":userID"=>$_SESSION['userID']));
+                echo "0";
                 
             } catch (Exception $e) {
                echo $e;   

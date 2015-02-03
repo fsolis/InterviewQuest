@@ -183,7 +183,7 @@
     display: block;
 }
 
-#errorcodeQuestions {
+.haserror {
     text-align: center;
     color: red;
 }

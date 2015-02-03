@@ -4,6 +4,7 @@ function closeSubmit() {
 }
 
 function refreshPage() {
+    "use strict";
     window.location.href = 'http://localhost/interviewQuest/add.php';
 }
 
@@ -97,34 +98,80 @@ function submitValidated(variables) {
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest();
     }
-    xmlhttp.open("GET", variables, true);
-    xmlhttp.send();
+    xmlhttp.open("POST", "http://localhost/interviewQuest/utilities.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send(variables);
             
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             var response = xmlhttp.responseText;//gets response output
-            var error = document.getElementById("errorcodeQuestions");
             if (response === "1") {
                 //could not submit
-                error.innerHTML = "Error Submitting Question.";
+                alert("Error Submitting Question.");
             } else if (response === "0") {
                 //submition successful
-                error.innerHTML = "Question Submitted.";
+                $("#questionSubmitted").modal('show');
             }
         }
     }
 }
 
+//This function retrieves values of single answer form and submit them to submitValidated
 function submitSingleAnswer() {
     "use strict";
     var question = document.getElementById("singleAnswerQuestion").value;
     var answer = document.getElementById("singleAnswerAnswer").value;
     if ((question.length) > 0 && (answer.length) > 0) {
-        var variables = "http://localhost/interviewQuest/utilities.php?type=singleAnswerQuestion&question=" +
-                question + "&answer=" + answer + "&type=SA&languageId=" + getLanguage();
-        //submitValidated(variables);
+        var variables = "type=singleAnswerQuestion&question=" +
+                question + "&answer=" + answer + "&languageId=" + getLanguage();
+        submitValidated(variables);
     } else {
+        //form did not pass validation, cannot submit empty or null values
         document.getElementById("errorcodeQuestions").innerHTML = "Invalid Input.";
+    }
+}
+
+function getRadioChecked() {
+    "use strict";
+    var radios = document.getElementsByName("inlineRadioOptions");
+    var i, length = radios.length;
+    for (i = 0; i < length; i += 1) {
+        if (radios[i].checked) {
+            // do whatever you want with the checked radio
+            return radios[i].value;
+        }
+    }
+    return "";
+}
+
+function submitMultipleChoice() {
+    "use strict";
+    var question = document.getElementById("multipleChoiceQuestion").value;
+    var answer1 = document.getElementById("multipleChoiceAnswer1").value;
+    var answer2 = document.getElementById("multipleChoiceAnswer2").value;
+    var answer3 = document.getElementById("multipleChoiceAnswer3").value;
+    var answer4 = document.getElementById("multipleChoiceAnswer4").value;
+    var correctAnswer = getRadioChecked();
+    var validated = true;
+    if (question.length <= 0) {
+        validated = false;
+    } else if (answer1.length <= 0) {
+        validated = false;
+    } else if (answer2.length <= 0) {
+        validated = false;
+    } else if (answer3.length <= 0) {
+        validated = false;
+    } else if (answer4.length <= 0) {
+        validated = false;
+    } else if (correctAnswer.length <= 0) {
+        validated = false;
+    }
+    if (validated === true) {
+        var variables = "type=multipleChoiceQuestion&question=" + question + "&answer1=" + answer1 + "&answer2=" + answer2 + "&answer3=" + answer3 + "&answer4=" + answer4 + "&correctAnswer=" + correctAnswer + "&languageId=" + getLanguage();
+        submitValidated(variables);
+    } else {
+        //form did not pass validation, cannot submit empty or null values
+        document.getElementById("multipleChoiceError").innerHTML = "Invalid Input, All Inputs Are Required.";
     }
 }
 
@@ -133,4 +180,5 @@ function getLanguage() {
     var languageId = document.getElementById("language").value;
     return languageId;
 }
+
 

@@ -126,7 +126,9 @@
                   <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="4"> 4
                 </label>
                   <br />
-                  <a type="button" class="btn btn-primary" onclick="submitQuestion()">Submit</a>
+                  <p id="multipleChoiceError" class="haserror"></p>
+                  <br />
+                  <a type="button" class="btn btn-primary" onclick="submitMultipleChoice()">Submit</a>
               </div>
                <!-- Start Multiple Answer Form -->
               <div id="multipleAnswerForm" class="invisible">
@@ -183,6 +185,24 @@
                      <div class="modal-footer">
                         <a onclick="submitNewLanguage()" id="greenbutton" type="button" class="btn">Submit</a>
                         <a onclick="closeSubmit()" type="button" class="btn btn-warning">Close</a>
+                      </div>
+                </div>
+            </div>
+      </div>
+        
+      <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="titleComplete" aria-hidden="true" id="questionSubmitted" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="titleComplete">Question Successfully Submitted</h3>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Thank you for your contribution!</h3>
+                        <p>You have successfully added a question! You can choose go home and continue your journey or submit another question.</p>
+                    </div>
+                     <div class="modal-footer">
+                        <a href="add.php" id="greenbutton" type="button" class="btn">Another Question</a>
+                        <a href="index.php" type="button" class="btn btn-warning">Go Home</a>
                       </div>
                 </div>
             </div>
