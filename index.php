@@ -53,7 +53,7 @@
       </div>
         
         <!-- Start Login Modal -->
-		<div class="modal fade" id="login" role="dialog">
+		<div class="modal fade" id="login" role="dialog" data-keyboard="false" data-backdrop="static">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<form class="form-horizontal">
@@ -61,9 +61,9 @@
 							<h3>Login</h3>
 						</div>
 						<div class="modal-body">
-							<div class="form-group">
+							<div class="form-group" id="usernamefeedback">
 								<label for="username" class="col-lg-2 control-label">Username</label>
-								<div class="col-lg-10">
+								<div class="col-lg-10" >
 									<input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
 								</div>
 							</div>
@@ -100,3 +100,5 @@
     <script src="js/login.js"></script>
   </body>
 </html>
+    
+    

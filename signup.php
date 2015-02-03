@@ -74,11 +74,11 @@
       </div>
 
     
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="success" aria-hidden="true" id="successModal" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog modal-sm">
+        <div class="modal fade " tabindex="-1" role="dialog" aria-labelledby="success" aria-hidden="true" id="successModal" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="Success">User Successfully Registered</h5>
+                        <h2 class="modal-title" id="Success">User Successfully Registered</h2>
                     </div>
                     <div class="modal-body">
                         <h3 id="welcomeMessage"></h3>
@@ -91,19 +91,31 @@
             </div>
         </div>
         
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="failed" aria-hidden="true" id="failedModal" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog modal-sm">
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="failed" aria-hidden="true" id="failedModal" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="failed">Unable to complete registration</h5>
+                        <h2 class="modal-title" id="failed">Unable to complete registration</h2>
                     </div>
                     <div class="modal-body">
                         <h3>Uh Oh...</h3>
-                        <p>There seems to be a problem completing your registration, please try again. Please make sure you are not already logged in and that your information is correct.</p>
+                        <p>There seems to be a problem completing your registration, please try again. Please make sure you are not already logged in and that your information is both complete and correct.</p>
                     </div>
                      <div class="modal-footer">
-                        <button #id="greenbutton" type="button" class="btn btn-primary" dismiss="modal">Try Again</button>
+                        <a id="greenbutton" type="button" class="btn btn-primary" onclick="closeModal()">Try Again</a>
                       </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true" id="loadingModal" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="title">Loading....</h2>
+                    </div>
+                    <div class="modal-body" id="loadingbody">
+                    </div>
                 </div>
             </div>
         </div>
@@ -114,5 +126,6 @@
     <script src="js/bootstrap.min.js"></script>
     <!--Include javascript for this page -->
     <script src="js/signup.js"></script>
+    <script src="js/spin.js"></script>
   </body>
 </html>

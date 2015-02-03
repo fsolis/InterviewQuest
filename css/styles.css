@@ -123,12 +123,19 @@
     margin-left: 125px;
 }
 
+#addquestioncontent{
+    width:605px;
+    margin-top: 50px;
+    margin-left: 125px;
+}
+
 #footer{
   border-radius: 5px;
   margin-left: 125px;
   margin-top: 50px;
   width:605px;
 }
+
 #signupfooter{
   border-radius: 5px;
   margin-left: 125px;
@@ -151,4 +158,32 @@
 
 #welcomeMessage{
     margin-left: 7px;   
+}
+
+#pageHeader{
+    text-align: center;
+    color: #008000;
+}
+
+#loadingbody{
+    height: 150px;   
+}
+
+#errorcode {
+    text-align: center;
+}
+
+.invisible{
+    visibility: hidden;
+    display: none;
+}
+
+.visible {
+    visibility: visible;
+    display: block;
+}
+
+#errorcodeQuestions {
+    text-align: center;
+    color: red;
 }
