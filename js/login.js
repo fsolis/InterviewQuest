@@ -1,17 +1,23 @@
+//Author: Freddy Solis
+//Created: Jan 30, 2015
+//This file contians the javascript functions that 
+//allow the user to use Ajax to asychronosly log in
 
+//this function displays error that username does not exist
 function usernameFailed() {
     var username = document.getElementById("usernamefeedback");
     username.setAttribute("class", "form-group has-error has-feedback");
-    
 }
 
+//this function displays success that username does exist
 function usernamePassed() {
     var username = document.getElementById("usernamefeedback");
     username.setAttribute("class", "form-group has-success has-feedback");
 }
 
+//Jquery functions that listen to certain inputs
 $(document).ready(function () {
-       
+       //this function listens to the username input field 
     $("input[name=username]").change(function () {
         var xmlhttp;
         if (window.XMLHttpRequest) {
@@ -37,7 +43,7 @@ $(document).ready(function () {
 
 });//end document.ready
 
-
+//tries to log user into system using ajax
 function attemptLogin() {
     var username = $("input[name=username]").val();
     var password = $("input[name=password]").val();

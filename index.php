@@ -1,4 +1,8 @@
 <?php
+    //Author:Freddy Solis
+    //Created: Jan 15, 2015
+    //Description: This page will be the landing page of the site, this is where the user 
+    //will be able to log in. 
     session_start(); 
 	require_once'dbConn.php';
 ?>
@@ -26,13 +30,17 @@
     <![endif]-->
   </head>
   <body>
+      <!-- Container that will hold all content so that elements get bootstrap css -->
     <div class="container">
+        
+        <!-- start navigation bar -->
       <div id="navbar">
           <div id="navbar-left">
             <a href="#"><img id="navbarlogo" src="images/indexLogo.png"></a>
           </div>
           <div id="navbar-right">
             <?php
+                //check to see if user is logged in and display appropriate buttons
                 if(isset($_SESSION['loggedin'])){
                     echo " Welcome, ".$_SESSION['firstName'];
                     echo "<a href=\"logout.php\"><button type=\"button\" id=\"greenbutton\" class=\"btn btn-default btn-lg\"> Sign Out</button></a>";
@@ -42,15 +50,19 @@
                }
             ?>
           </div>
-      </div>
-      <br>
+      </div><!--End navigation bar -->
+      
+        <br />
+        
+        <!-- start logo -->    
       <div id="indexcontent"> 
           <a href="start.php"> <img id="indexstartlogo" src="images/interviewQuestindext%20logo.png"> </a>
-      </div>
+      </div><!-- end start logo -->
         
+        <!--start footer -->
       <div id="footer">
             <a href="about.php"> <button type="button" id="aboutbutton" class="btn btn-default btn-lg">About</button></a>
-      </div>
+      </div><!--end footer -->
         
         <!-- Start Login Modal -->
 		<div class="modal fade" id="login" role="dialog" data-keyboard="false" data-backdrop="static">
@@ -74,7 +86,7 @@
 								</div>
 							</div>
 							
-							<div class"form-group">
+							<div class="form-group">
 								<div class="col-lg-10 text-center">
 									<a class="btn btn-primary" onclick="attemptLogin()">Login</a>
 									<div >
@@ -91,6 +103,7 @@
 			</div>
 		</div>
 		<!-- End Login Modal -->
+      </div> <!--End content -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

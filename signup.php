@@ -1,4 +1,8 @@
 <?php
+    //Author: Freddy Solis
+    //Created: Jan 20, 2015
+    //This page will display a form so a new user can register all transactions
+    //will be done asychronously through Ajax
     require_once 'dbConn.php';
     session_start(); 
 ?>
@@ -26,13 +30,16 @@
     <![endif]-->
   </head>
   <body>
+      <!-- container to hold all elements so that bootstrap can be applied to them -->
     <div class="container">
+        <!-- Start navigation bar -->
       <div id="navbar">
           <div id="navbar-left">
             <a href="index.php"><img id="navbarlogo" src="images/indexLogo.png"></a>
           </div>
           <div id="navbar-right">
             <?php
+                //if logged in will display user name and signout button other wise will display home button
                 if(isset($_SESSION['loggedin'])){
                     echo " Welcome,".$_SESSION['firstName'];
                     echo "<a href=\"logout.php\"><button type=\"button\" id=\"greenbutton\" class=\"btn btn-default btn-lg\"> Sign Out</button></a>";
@@ -41,56 +48,59 @@
                }
             ?>
           </div>
-      </div>
+      </div> <!-- End navigation bar -->
       <br>
+        <!-- Start signup form -->
       <div id="signupcontent"> 
           <form method="post">
               <div id="usernamefeedback" class="form-group">
-                <label for="exampleInputEmail1">Username</label>
+                <label for="username">Username</label>
                 <input type="text" class="form-control" id="username" name="username" required placeholder="Username">
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
+                <label for="password">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required placeholder="Password">
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">First Name</label>
+                <label for="firstName">First Name</label>
                 <input type="text" class="form-control" id="firstName" name="firstName" required placeholder="First Name">
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">Last Name</label>
+                <label for="lastName">Last Name</label>
                 <input type="text" class="form-control" id="lastName" name="lastName" required placeholder="Last Name">
               </div>
               <div id="emailfeedback" class="form-group">
-                <label for="exampleInputEmail1">Email</label>
+                <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email" required placeholder="email@email.com">
               </div>
               <button  id="submitbutton" type="button" onclick="submitUser()" class="btn btn-primary">Submit</button>
         </form>
-      </div>
+      </div> <!-- End signup form -->
         
+        <!-- Start footer -->
       <div id="signupfooter">
             <a href="about.php"> <button type="button" id="aboutbutton" class="btn btn-default btn-lg">About</button></a>
-      </div>
+      </div> <!-- End footer -->
 
-    
+        <!-- Start modal that displays a successfully registered message -->
         <div class="modal fade " tabindex="-1" role="dialog" aria-labelledby="success" aria-hidden="true" id="successModal" data-keyboard="false" data-backdrop="static">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 class="modal-title" id="Success">User Successfully Registered</h2>
+                        <h2 class="modal-title" id="success">User Successfully Registered</h2>
                     </div>
                     <div class="modal-body">
                         <h3 id="welcomeMessage"></h3>
                         <p>Now that you have an account you will be able to help InterviewQuest become better by submitting your own questions, reporting questions that are incorrect, as well as more upcomeing features! Now let the journey continue.</p>
                     </div>
                      <div class="modal-footer">
-                        <a href="index.php" #id="greenbutton" type="button" class="btn btn-primary">Continue</a>
+                        <a href="index.php" id="greenbutton" type="button" class="btn btn-primary">Continue</a>
                       </div>
                 </div>
             </div>
-        </div>
+        </div> <!-- End success modal-->
         
+        <!-- Start unsuccessful registration modal -->
         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="failed" aria-hidden="true" id="failedModal" data-keyboard="false" data-backdrop="static">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -106,8 +116,9 @@
                       </div>
                 </div>
             </div>
-        </div>
+        </div><!-- end failed modal-->
         
+        <!-- Start loading modal -->
         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true" id="loadingModal" data-keyboard="false" data-backdrop="static">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -118,8 +129,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div><!--end loading modal -->
         
+      </div><!--end content -->
+      
+      
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

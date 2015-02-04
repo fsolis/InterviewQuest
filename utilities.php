@@ -1,8 +1,13 @@
 <?php
+    //Author: Freddy Solis
+    //Created: Jan 20th, 2015
+    //This page handles all ajax requests, each statement triggers 
+    //specific database queries
     require_once 'dbConn.php';
     session_start();
 
     if ($_GET['type']=='checkusername') {
+        //check if username exists
        try{
            $sql = "SELECT * FROM Users WHERE userID = :userName";
            $stmt = $dbConn -> prepare($sql);
@@ -14,7 +19,9 @@
        } catch (Exception $e){
             echo 'Error Checking Username';
        }
+        
     } else if ($_GET['type']=='checkemail') {
+        //check if email already exists
         try{
            $sql = "SELECT * FROM Users WHERE email = :email";
            $stmt = $dbConn -> prepare($sql);
@@ -26,8 +33,9 @@
         } catch (Exception $e) {
             echo 'Could not Check email';   
         }
-    }else if ($_POST['type']=='register') {
         
+    }else if ($_POST['type']=='register') {
+        //submits new users
         try{
             if(isset($_SESSION['loggedin'])){
                 echo "1";
@@ -48,7 +56,7 @@
         }
             
     } else if ($_POST['type']=='login') {
-        
+        //logs user in 
         try{
             if(isset($_SESSION['loggedin'])){
                 echo "1";
@@ -77,7 +85,7 @@
         }
             
     } else if ($_GET['type']=='checkLanguage') {
-        
+        //checks to  see if language already exists
         try{
                 $sql = "SELECT * from Languages WHERE languageName = :languageName";
                 $stmt = $dbConn -> prepare($sql);
@@ -92,7 +100,9 @@
             echo $e;
                // echo 'Unable to register user, please verify that the username or email are valid.';
         }
+        
     } else if ($_GET['type']=='submitNewLanguage') {
+        //adds new language to language table
         if(!isset($_SESSION['loggedin'])){
                 echo "1";
         }else {
@@ -106,18 +116,18 @@
                 echo $e;
                 // echo 'Unable to register user, please verify that the username or email are valid.';
             }
-            
         }
              
     }else if ($_POST['type'] == 'singleAnswerQuestion') {
+        //adds new single answer question to question table
         if(!isset($_SESSION['loggedin'])) {
             echo "1";   
         } else {
          
             try{
-                $sql = "INSERT INTO Questions (languageID, question, answer1, type, correctAnswer, userID) VALUES (:languageID, :question, :answer1, 'SA', '1', :userID)";
+                $sql = "INSERT INTO Questions (languageID, question, answer1, type, difficulty, correctAnswer, userID) VALUES (:languageID, :question, :answer1, 'SA', :difficulty, '1', :userID)";
                 $stmt = $dbConn -> prepare($sql);
-                $stmt -> execute(array(":languageID"=> $_POST['languageId'], ":question"=>$_POST['question'], ":answer1"=>$_POST['answer'], ":userID"=>$_SESSION['userID']));
+                $stmt -> execute(array(":languageID"=> $_POST['languageId'], ":question"=>$_POST['question'], ":answer1"=>$_POST['answer'],":difficulty"=>$_POST['difficulty'], ":userID"=>$_SESSION['userID']));
                 echo "0";
                 
             } catch (Exception $e) {
@@ -125,21 +135,24 @@
             }
             
         }
+        
     } else if ($_POST['type'] == 'multipleChoiceQuestion') {
+        //adds multiple choice question to question table
         if(!isset($_SESSION['loggedin'])) {
             echo "1";   
         } else {
          
             try{
-                $sql = "INSERT INTO Questions (languageID, question, answer1, answer2, answer3, answer4, type, correctAnswer, userID) VALUES (:languageID, :question, :answer1, :answer2, :answer3, :answer4, 'MC', :correctAnswer, :userID)";
+                $sql = "INSERT INTO Questions (languageID, question, answer1, answer2, answer3, answer4, type, difficulty, correctAnswer, userID) VALUES (:languageID, :question, :answer1, :answer2, :answer3, :answer4, 'MC', :difficulty, :correctAnswer, :userID)";
                 $stmt = $dbConn -> prepare($sql);
-                $stmt -> execute(array(":languageID"=> $_POST['languageId'], ":question"=>$_POST['question'], ":answer1"=>$_POST['answer1'],":answer2"=>$_POST['answer2'],":answer3"=>$_POST['answer3'],":answer4"=>$_POST['answer4'],":correctAnswer"=>$_POST['correctAnswer'], ":userID"=>$_SESSION['userID']));
+                $stmt -> execute(array(":languageID"=> $_POST['languageId'], ":question"=>$_POST['question'], ":answer1"=>$_POST['answer1'],":answer2"=>$_POST['answer2'],":answer3"=>$_POST['answer3'],":answer4"=>$_POST['answer4'],":difficulty"=>$_POST['difficulty'],":correctAnswer"=>$_POST['correctAnswer'], ":userID"=>$_SESSION['userID']));
                 echo "0";
                 
             } catch (Exception $e) {
                echo $e;   
-            }
-            
+            }   
         }
+    } else if($_POST['type'] == 'multipleAnswerQuestion') {
+        //adds multiple choice question to question table   
     }
 ?>

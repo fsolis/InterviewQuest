@@ -1,13 +1,35 @@
+//Author: Freddy Solis
+//Created 2/2/2015
+//Description: this file will allow the user to add a new language or 
+//question to the database through ajax. This will also handle all 
+//animations done to the page 
+
+
+//open failed modal
+function openFailedModal() {
+    "use strict";
+    $('#questionSubmitionFailed').modal('show');
+}
+
+//close failed modal
+function closeFailedModal() {
+    "use strict";
+    $('#questionSubmitionFailed').modal('hide');
+}
+
+//close the add new language modal 
 function closeSubmit() {
     "use strict";
     $('#addLanguageModal').modal('hide');
 }
 
+//refreshes page to show any changes done to php
 function refreshPage() {
     "use strict";
     window.location.href = 'http://localhost/interviewQuest/add.php';
 }
 
+//this function submits a new language through ajax
 function submitVerifiedLanguage() {
     "use strict";
     var xmlhttp;
@@ -33,7 +55,7 @@ function submitVerifiedLanguage() {
     }
 }
 
-
+//This function uses ajax to make sure that a language does not already exist
 function verifyNewLanguage() {
     "use strict";
     var xmlhttp;
@@ -59,20 +81,20 @@ function verifyNewLanguage() {
     }
 }
 
-
-
+//This function shows the new language modal 
 function newLanguage() {
     "use strict";
     $('#addLanguageModal').modal('show');
 }
 
+//this function is called when the submit new language button is clicked
 function submitNewLanguage() {
     "use strict";
     verifyNewLanguage();
 }
 
 
-
+//this shows a different form but hides other first
 function makeVisible(element) {
     document.getElementById("singleAnswerForm").className = "invisible";
     document.getElementById("multipleChoiceForm").className = "invisible";
@@ -80,6 +102,7 @@ function makeVisible(element) {
     element.className = "visible";
 }
 
+//this is called when the type of form element is changed
 function questionTypeChange() {
     "use strict";
     var questionType = document.getElementById("questionType").value;
@@ -92,6 +115,7 @@ function questionTypeChange() {
     }
 }
 
+//this submits validated question through ajax
 function submitValidated(variables) {
     "use strict";
     var xmlhttp;
@@ -107,7 +131,7 @@ function submitValidated(variables) {
             var response = xmlhttp.responseText;//gets response output
             if (response === "1") {
                 //could not submit
-                alert("Error Submitting Question.");
+                openFailedModal();
             } else if (response === "0") {
                 //submition successful
                 $("#questionSubmitted").modal('show');
@@ -122,8 +146,7 @@ function submitSingleAnswer() {
     var question = document.getElementById("singleAnswerQuestion").value;
     var answer = document.getElementById("singleAnswerAnswer").value;
     if ((question.length) > 0 && (answer.length) > 0) {
-        var variables = "type=singleAnswerQuestion&question=" +
-                question + "&answer=" + answer + "&languageId=" + getLanguage();
+        var variables = "type=singleAnswerQuestion&question=" + question + "&answer=" + answer + "&languageId=" + getLanguage() + "&difficulty=" + getDifficulty();
         submitValidated(variables);
     } else {
         //form did not pass validation, cannot submit empty or null values
@@ -131,9 +154,10 @@ function submitSingleAnswer() {
     }
 }
 
+//checks to see which answer was chosen as correct
 function getRadioChecked() {
     "use strict";
-    var radios = document.getElementsByName("inlineRadioOptions");
+    var radios = document.getElementsByName("multipleChoiceCorrectAnswer");
     var i, length = radios.length;
     for (i = 0; i < length; i += 1) {
         if (radios[i].checked) {
@@ -144,6 +168,7 @@ function getRadioChecked() {
     return "";
 }
 
+//validates the answers and questions of the multiple choice form 
 function submitMultipleChoice() {
     "use strict";
     var question = document.getElementById("multipleChoiceQuestion").value;
@@ -167,7 +192,7 @@ function submitMultipleChoice() {
         validated = false;
     }
     if (validated === true) {
-        var variables = "type=multipleChoiceQuestion&question=" + question + "&answer1=" + answer1 + "&answer2=" + answer2 + "&answer3=" + answer3 + "&answer4=" + answer4 + "&correctAnswer=" + correctAnswer + "&languageId=" + getLanguage();
+        var variables = "type=multipleChoiceQuestion&question=" + question + "&answer1=" + answer1 + "&answer2=" + answer2 + "&answer3=" + answer3 + "&answer4=" + answer4 + "&correctAnswer=" + correctAnswer + "&languageId=" + getLanguage() + "&difficulty=" + getDifficulty();
         submitValidated(variables);
     } else {
         //form did not pass validation, cannot submit empty or null values
@@ -175,10 +200,19 @@ function submitMultipleChoice() {
     }
 }
 
+//this function retrieves 
+
+//retrieves id of the language the question belongs to
 function getLanguage() {
     "use strict";
     var languageId = document.getElementById("language").value;
     return languageId;
 }
 
+//retrieves value of difficulty of question
+function getDifficulty() {
+    "use strict";
+    var difficulty = document.getElementById("difficulty").value;
+    return difficulty;
+}
 

@@ -21,7 +21,10 @@
     <![endif]-->
   </head>
   <body>
+      <!-- Container that will hold all content so that elements get bootstrap css -->
     <div class="container">
+        
+        <!-- start navigation bar -->
       <div id="navbar">
           <div id="navbar-left">
             <a href="#"><img id="navbarlogo" src="images/indexLogo.png"></a>
@@ -29,8 +32,10 @@
           <div id="navbar-right">
             <a href="index.php"> Home </a>
           </div>
-      </div>
+      </div> <!--end navigation bar -->
+        
       <br>
+        <!-- start about content -->
       <div id="about">
           <div id="statement">
             <div id="centerheader">
@@ -45,8 +50,11 @@
           <div id="logo">
             <img id="abouti" src="images/i.png">
           </div>
-      </div>
+      </div><!-- end about statement -->
+        
         <br>
+        
+        <!--start supported languages -->
       <div id="languages">
           <div id="centerheader">
                 <h1> Languages </h1>
@@ -68,15 +76,17 @@
                 CSS, HTML, JavaScript and More.
             </div>
           </div>
-      </div>
+      </div> <!-- end supported languages -->
+        
+        <!-- Start skill levels information -->
       <div id="skilllevels">
       
           <div id="centerheader">
                 <h1> Skill Levels </h1>
           </div>
-      </div>
+      </div> <!-- end skill level information -->
         
-    </div>
+    </div> <!--end container -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
