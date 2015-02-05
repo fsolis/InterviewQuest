@@ -168,6 +168,20 @@ function getRadioChecked() {
     return "";
 }
 
+//checks to see which answer was chosen as correct for multiple answer
+function getChecked() {
+    var checks = document.getElementsByName("multipleChoiceCorrectAnswer");
+    var i, length = checks.length, totalValue = 0;
+    for (i = 0; i < length; i +=1) {
+        if (checks[i].checked) {
+            totalValue = (totalValue - 0) + (checks[i].value - 0);   
+        }
+    }
+    
+    return totalValue;
+    
+}
+
 //validates the answers and questions of the multiple choice form 
 function submitMultipleChoice() {
     "use strict";
@@ -200,7 +214,39 @@ function submitMultipleChoice() {
     }
 }
 
-//this function retrieves 
+//this function retrieves question and answer of multiple answer form
+function submitMultipleAnswer() {
+    "use strict";
+    var question = document.getElementById("multipleAnswerQuestion").value;
+    var answer1 = document.getElementById("multipleAnswer1").value;
+    var answer2 = document.getElementById("multipleAnswer2").value;
+    var answer3 = document.getElementById("multipleAnswer3").value;
+    var answer4 = document.getElementById("multipleAnswer4").value;
+    var correctAnswer = getChecked();
+    var validated = true;
+    if (question.length <= 0) {
+        validated = false;
+    } else if (answer1.length <= 0) {
+        validated = false;
+    } else if (answer2.length <= 0) {
+        validated = false;
+    } else if (answer3.length <= 0) {
+        validated = false;
+    } else if (answer4.length <= 0) {
+        validated = false;
+    } else if (correctAnswer <= 0) {
+        validated = false;
+    }
+    
+    if (validated === true) {
+        var variables = "type=multipleAnswerQuestion&question=" + question + "&answer1=" + answer1 + "&answer2=" + answer2 + "&answer3=" + answer3 + "&answer4=" + answer4 + "&correctAnswer=" + correctAnswer + "&languageId=" + getLanguage() + "&difficulty=" + getDifficulty();
+        submitValidated(variables);
+    } else {
+        //form did not pass validation, cannot submit empty or null values
+        document.getElementById("multipleAnswerError").innerHTML = "Invalid Input, All Inputs Are Required.";
+    }
+    
+}
 
 //retrieves id of the language the question belongs to
 function getLanguage() {

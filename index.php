@@ -57,6 +57,7 @@
         <!-- start logo -->    
       <div id="indexcontent"> 
           <a href="start.php"> <img id="indexstartlogo" src="images/interviewQuestindext%20logo.png"> </a>
+          
       </div><!-- end start logo -->
         
         <!--start footer -->

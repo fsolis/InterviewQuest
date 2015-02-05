@@ -153,6 +153,21 @@
             }   
         }
     } else if($_POST['type'] == 'multipleAnswerQuestion') {
-        //adds multiple choice question to question table   
+        //adds multiple choice question to question table 
+        if(!isset($_SESSION['loggedin'])) {
+            echo "1";   
+        } else {
+         
+            try{
+                $sql = "INSERT INTO Questions (languageID, question, answer1, answer2, answer3, answer4, type, difficulty, correctAnswer, userID) VALUES (:languageID, :question, :answer1, :answer2, :answer3, :answer4, 'MA', :difficulty, :correctAnswer, :userID)";
+                $stmt = $dbConn -> prepare($sql);
+                $stmt -> execute(array(":languageID"=> $_POST['languageId'], ":question"=>$_POST['question'], ":answer1"=>$_POST['answer1'],":answer2"=>$_POST['answer2'],":answer3"=>$_POST['answer3'],":answer4"=>$_POST['answer4'],":difficulty"=>$_POST['difficulty'],":correctAnswer"=>$_POST['correctAnswer'], ":userID"=>$_SESSION['userID']));
+                echo "0";
+                
+            } catch (Exception $e) {
+               echo $e;   
+            }   
+        }
+        
     }
 ?>

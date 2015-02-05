@@ -59,7 +59,7 @@
           <br />
               <!-- Add new language -->
               <div class="form-group">
-                  <label >Select Language: </label>
+                  <label >Select Topic: </label>
                     <div class="row">
                         <div class="col-sm-9">
                             <select id="language" name="language" class="form-control">
@@ -70,7 +70,7 @@
                                     $stmt -> execute();
                                     $record = $stmt -> fetchAll();
                                     if (empty($record)) {
-                                        echo "<option>No Languages Found</option>";
+                                        echo "<option>No Topics Found</option>";
                                     } else {
                                         foreach($record as $row) {
                                             echo "<option value='".$row['id']."'>".$row['languageName']."</option>";
@@ -81,7 +81,7 @@
                         </div>
                         <div class="col-sm-2">
                             <!-- button to add new language, triggers modal -->
-                            <a class="btn" id="greenbutton" onclick="newLanguage()">Add Language</a>
+                            <a class="btn" id="greenbutton" onclick="newLanguage()">Add Topic</a>
                         </div>
                     </div> 
               </div> <!-- End add new language -->
@@ -143,13 +143,13 @@
                   <input type="radio" name="multipleChoiceCorrectAnswer" id="inlineRadio1" value="1">Answer 1
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="multipleChoiceCorrectAnswer" id="inlineRadio2" value="2">Answer 2
+                  <input type="radio" name="multipleChoiceCorrectAnswer" id="inlineRadio2" value="3">Answer 2
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="multipleChoiceCorrectAnswer" id="inlineRadio3" value="3">Answer 3
+                  <input type="radio" name="multipleChoiceCorrectAnswer" id="inlineRadio3" value="5">Answer 3
                 </label>
                   <label class="radio-inline">
-                  <input type="radio" name="multipleChoiceCorrectAnswer" id="inlineRadio3" value="4">Answer 4
+                  <input type="radio" name="multipleChoiceCorrectAnswer" id="inlineRadio3" value="11">Answer 4
                 </label>
                   <br />
                   <p id="multipleChoiceError" class="haserror"></p>
@@ -163,32 +163,34 @@
                   <textarea id="multipleAnswerQuestion" class="form-control" rows="3"></textarea>
                   <br />
                   
-                  <label for="multipleChoiceAnswer1">Answer 1:</label>
-                  <textarea id="multipleChoiceAnswer1" class="form-control" rows="3"></textarea>
+                  <label for="multipleAnswer1">Answer 1:</label>
+                  <textarea id="multipleAnswer1" class="form-control" rows="3"></textarea>
                   <br />
-                  <label for="multipleChoiceAnswer2">Answer 2:</label>
-                  <textarea id="multipleChoiceAnswer2" class="form-control" rows="3"></textarea>
+                  <label for="multipleAnswer2">Answer 2:</label>
+                  <textarea id="multipleAnswer2" class="form-control" rows="3"></textarea>
                   <br />
-                  <label for="multipleChoiceAnswer3">Answer 3:</label>
-                  <textarea id="multipleChoiceAnswer3" class="form-control" rows="3"></textarea>
+                  <label for="multipleAnswer3">Answer 3:</label>
+                  <textarea id="multipleAnswer3" class="form-control" rows="3"></textarea>
                   <br />
-                  <label for="multipleChoiceAnswer4">Answer 4:</label>
-                  <textarea id="multipleChoiceAnswer4" class="form-control" rows="3"></textarea>
+                  <label for="multipleAnswer4">Answer 4:</label>
+                  <textarea id="multipleAnswer4" class="form-control" rows="3"></textarea>
                   <br />
                   <label>Select the Correct Answers:</label>
                   <label class="checkbox-inline">
                   <input type="checkbox" name="multipleChoiceCorrectAnswer" id="inlineCheckbox1" value="1">Answer 1
                 </label>
                 <label class="checkbox-inline">
-                  <input type="checkbox" name="multipleChoiceCorrectAnswer" id="inlineCheckbox2" value="2">Answer 2
+                  <input type="checkbox" name="multipleChoiceCorrectAnswer" id="inlineCheckbox2" value="3">Answer 2
                 </label>
                 <label class="checkbox-inline">
-                  <input type="checkbox" name="multipleChoiceCorrectAnswer" id="inlineCheckbox3" value="3">Answer 3
+                  <input type="checkbox" name="multipleChoiceCorrectAnswer" id="inlineCheckbox3" value="5">Answer 3
                 </label>
                   <label class="checkbox-inline">
-                  <input type="checkbox" name="multipleChoiceCorrectAnswer" id="inlineCheckbox4" value="4">Answer 4
+                  <input type="checkbox" name="multipleChoiceCorrectAnswer" id="inlineCheckbox4" value="11">Answer 4
                 </label>
-                  <br /> <br />
+                  <br /> 
+                  <p id="multipleAnswerError" class="haserror"></p>
+                  <br />
                   <a type="button" class="btn btn-primary" onclick="submitMultipleAnswer()">Submit</a>
               </div>
             
@@ -204,11 +206,11 @@
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title" id="title">Add New Language</h3>
+                        <h3 class="modal-title" id="title">Add New Topic</h3>
                     </div>
                     <div class="modal-body">
-                        <h3>Language Name</h3>
-                        <input type="text" class="form-control" id="newLanguageName" name="newLanguageName" required placeholder="New Language">
+                        <h3>Topic Name:</h3>
+                        <input type="text" class="form-control" id="newLanguageName" name="newLanguageName" required placeholder="New Topic">
                         <p id="errorcode"></p>
                     </div>
                      <div class="modal-footer">
@@ -255,7 +257,7 @@
                       </div>
                 </div>
             </div>
-      </div> <!--end question successfully added modal -->
+      </div> <!--end question failed modal -->
         
         
     </div> <!-- end content for bootstrap -->
