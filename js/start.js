@@ -74,7 +74,7 @@ function getLanguages() {
     var final = "?type=startQuiz";
     if (language1 > 0) {
         numberOfValid += 1;
-        final = final + "&firstLangId=" + language1;
+        final = final + "&1LangId=" + language1;
         checkDuplicates.push(language1);
     }
     if (language2 > 0) {
@@ -83,7 +83,7 @@ function getLanguages() {
             return "failed";
         } else {
             numberOfValid += 1;
-            final = final + "&secondLangId=" + language2;
+            final = final + "&2LangId=" + language2;
             checkDuplicates.push(language2);
         }
     }
@@ -93,7 +93,7 @@ function getLanguages() {
             return "failed";
         } else {
             numberOfValid += 1;
-            final = final + "&thirdLangId=" + language3;
+            final = final + "&3LangId=" + language3;
             checkDuplicates.push(language3);
         }
     }
@@ -103,7 +103,7 @@ function getLanguages() {
             return "failed";
         } else {
             numberOfValid += 1;
-            final = final + "&fourthLangId=" + language4;
+            final = final + "&4LangId=" + language4;
             checkDuplicates.push(language4);
         }
     }
@@ -113,7 +113,7 @@ function getLanguages() {
             return "failed";
         } else {
             numberOfValid += 1;
-            final = final + "&fifthLangId=" + language5;
+            final = final + "&5LangId=" + language5;
             checkDuplicates.push(language5);
         }
     }

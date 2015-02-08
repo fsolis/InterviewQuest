@@ -5,7 +5,7 @@
     $host = "localhost";
     $dbName = "InterviewQuest"; 
     $username = "fsolis"; 
-    $pwd = "apple117"; 
+    $pwd = "apple117";
 
     //creates connection
     $dbConn = new PDO("mysql:host=".$host.";dbname=".$dbName, $username, $pwd);

@@ -181,10 +181,10 @@
                 <div id="questionDifficulty" class="form-group">
                 <h3>Select Test Size:</h3>
                     <select id="size" name="size" class="form-control">
+                        <option value="10">10 Questions</option>
                         <option value="25">25 Questions</option>
+                        <option value="35">35 Questions</option>
                         <option value="50">50 Questions</option>
-                        <option value="75">75 Questions</option>
-                        <option value="100">100 Questions</option>
                     </select>
               </div><!--end select test size-->
               <br />

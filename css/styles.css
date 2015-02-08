@@ -196,3 +196,9 @@
     color: black !important;
     border: 1px solid black;
 }
+
+#questions {
+	width:605px;
+    margin-top: 50px;
+    margin-left: 125px;
+}
