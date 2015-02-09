@@ -170,69 +170,191 @@
 						echo "<div class=\"col-md-12\"><h3> A: ". $row['answer1'] . "</h3></div>";
 						echo "</div>";
 						echo "<div class=\"center\">";	
-						echo "<button class=\"btn btn-primary\" type=\"button\" data-toggle=\"collapse\" data-target=\"#answer".$i."\" aria-expanded=\"false\" aria-controls=\"answer".$i."\">Show Answer</button>";
-						echo "</div>";				
-						$i++;			
+						echo "<button class=\"btn btn-primary\" id=\"answerShow".$i."\" type=\"button\" data-toggle=\"collapse\" data-target=\"#answer".$i."\" aria-expanded=\"false\" aria-controls=\"answer".$i."\">Show Answer</button>";
+						echo "</div> <br />";	
+                        echo "<div class=\"center\" id=\"answerFeedback".$i."\">";
+                        echo "<a class=\"btn btn-success\" type=\"button\" onclick=\"disableButtons(answerFeedback".$i.", 1,answerShow".$i.")\">Correct </a>";
+                        echo "<a class=\"btn btn-danger\" type=\"button\" onclick=\"disableButtons(answerFeedback".$i.",-1,answerShow".$i.")\"> Incorrect</a>";
+                        echo "</div>";
+						$i++;
 					} else if ($row['type'] == 'MC'){
+                        $answer1 = getMCAnswer($row['correctAnswer'],1);
+                        $answer2 = getMCAnswer($row['correctAnswer'],2);
+                        $answer3 = getMCAnswer($row['correctAnswer'],3);
+                        $answer4 = getMCAnswer($row['correctAnswer'],4);
+                        echo "<div class=\"col-md-12\">";
+                        echo "<label class=\"radio-inline\">";
+						echo "<input type=\"radio\" name=\"multipleChoice".$i."\" id=\"multipleChoiceAnswer".$i."\" value=\"".$answer1."\">".$row['answer1'] ."</label></div>";
+						echo "<div class=\"col-md-12\">";
+						"<label class=\"radio-inline\">";
+						echo "<input type=\"radio\" name=\"multipleChoice".$i."\" id=\"multipleChoiceAnswer".$i."\" value=\"".$answer2."\">".$row['answer2'] ."</label></div>";
+						echo "<div class=\"col-md-12\">";
+						"<label class=\"radio-inline\">";
+						echo "<input type=\"radio\" name=\"multipleChoice".$i."\" id=\"multipleChoiceAnswer".$i."\" value=\"".$answer3."\">".$row['answer3'] ."</label></div>";
+						echo "<div class=\"col-md-12\">";
+						"<label class=\"radio-inline\">";
+						echo "<input type=\"radio\" name=\"multipleChoice".$i."\" id=\"multipleChoiceAnswer".$i."\" value=\"".$answer4."\">".$row['answer4'] ."</label></div>";
+						echo "<div class=\"center\">";
+                        echo "<a class=\"btn btn-primary\" type=\"button\" id=\"multipleChoiceButton".$i."\" onclick=\"checkMultipleChoice(multipleChoiceAnswer".$i.",multipleChoiceButton".$i.")\">Check Answer</a>";
+						echo "</div>";
+						$i++;
 						
 					} else if ($row['type'] == 'MA'){
+						$answer1 = getMAAnswer($row['correctAnswer'],1);
+                        $answer2 = getMAAnswer($row['correctAnswer'],2);
+                        $answer3 = getMAAnswer($row['correctAnswer'],3);
+                        $answer4 = getMAAnswer($row['correctAnswer'],4);
+						echo "<div class=\"col-md-12\">";
+              			echo "<label class=\"checkbox-inline\">";
+              			echo "<input type=\"checkbox\" id=\"multipleAnswer".$i."\" value=\"".$answer1."\">".$row['answer1']."</label>";
+						echo "</div>";
+						echo "<div class=\"col-md-12\">";
+              			echo "<label class=\"checkbox-inline\">";
+              			echo "<input type=\"checkbox\" id=\"multipleAnswer".$i."\" value=\"".$answer2."\">".$row['answer2']."</label>";
+						echo "</div>";
+						echo "<div class=\"col-md-12\">";
+              			echo "<label class=\"checkbox-inline\">";
+              			echo "<input type=\"checkbox\" id=\"multipleAnswer".$i."\" value=\"".$answer3."\">".$row['answer3']."</label>";
+						echo "</div>";
+						echo "<div class=\"col-md-12\">";
+              			echo "<label class=\"checkbox-inline\">";
+              			echo "<input type=\"checkbox\" id=\"multipleAnswer".$i."\" value=\"".$answer4."\">".$row['answer4']."</label>";
+						echo "</div>";
 						
+          				echo "<div class=\"center\">";
+            			echo "<a class=\"btn btn-primary\" type=\"button\" id=\"multipleAnswerButton".$i."\" onclick=\"checkMultipleAnswer(multipleAnswer".$i.",multipleAnswerButton".$i.")\" >Check Answer</a>";
+						echo "</div>";
+						$i++;
 					}
 					echo "</div><!--End Questions-->";
+					echo "<br/>";
 				}
+                
+                echo "</div>  <!-- End test -->";
+                echo "<div class=\"center\">";
+                echo "<div>";
+                echo "<h1>Total Score:</h1>";
+                echo "<h1 id=\"finalscore\">0</h1>";
+                echo "</div></div>";
+                
+			}
+
+            function getMCAnswer($correctAnswer,$currentRow) {
+                if( (int)$correctAnswer == $currentRow) {
+                    return 1;
+                } else {
+                    return 0;   
+                }
+            }
+			
+			function getMAAnswer($correctAnswer, $currentRow) {
+				if($currentRow == 4){
+					if((int)$correctAnswer > 11) {
+						return 1;
+					} else {
+						return 0;
+					}
+				} else if($currentRow == 3){
+					switch((int)$correctAnswer) {
+						case 5:
+							return 1;
+							break;
+						case 6: 
+							return 1;
+							break;
+						case 8:
+							return 1;
+							break;
+						case 9:
+							return 1;
+							break;
+						case 16:
+							return 1;
+							break;
+						case 17:
+							return 1;
+							break;
+						case 19:
+							return 1;
+							break;
+						case 20:
+							return 1;
+							break;
+						default:
+							return 0;
+							break;
+					}
+				} else if($currentRow == 2){
+								
+					switch((int)$correctAnswer) {
+						case 3:
+							return 1;
+							break;
+						case 4: 
+							return 1;
+							break;
+						case 8:
+							return 1;
+							break;
+						case 9:
+							return 1;
+							break;
+						case 14:
+							return 1;
+							break;
+						case 15:
+							return 1;
+							break;
+						case 19:
+							return 1;
+							break;
+						case 20:
+							return 1;
+							break;
+						default:
+							return 0;
+							break;
+					}
+				} else if ($currentRow == 1){
+					switch((int)$correctAnswer) {
+						case 1:
+							return 1;
+							break;
+						case 4: 
+							return 1;
+							break;
+						case 6:
+							return 1;
+							break;
+						case 9:
+							return 1;
+							break;
+						case 12:
+							return 1;
+							break;
+						case 15:
+							return 1;
+							break;
+						case 17:
+							return 1;
+							break;
+						case 20:
+							return 1;
+							break;
+						default:
+							return 0;
+							break;
+					}
+				}
+				
 			}
       
       ?>
-      <div class="row">
-      		<div class="col-md-12"><h3>Q: This is a single answer question.</h3></div>
-            <div class="collapse" id="testAnswer">
-                <div class="col-md-12"><h3>A: this is a single answer example</h3></div>
-            </div>
-            <div class="center">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#testAnswer" aria-expanded="false" aria-controls="testAnswer">Show Answer</button>
-                
-            </div>
-            <br />
-                <div class = "center" id="testAnswerFeedback">
-                <a class="btn btn-success" type="button" onclick="disableButtons(testAnswerFeedback, 1)">Correct</a>
-                <a class="btn btn-danger" type="button" onclick="disableButtons(testAnswerFeedback,-1)">Incorrect</a>
-                </div>
-      	
-      </div>
-      </div>  
-      <!-- End test -->
-      <div class="center">
-            <div>
-                <h1>Total Score:</h1>
-                <h1 id="finalscore">0</h1>
-            </div>
-      </div>
       
       <!-- start footer -->
       <div id="signupfooter">
             <a href="about.php"type="button" id="aboutbutton" class="btn btn-default btn-lg">About</a>
       </div> <!--End footer -->
-        
-        
-        <!--start questions failed to submit modal -->    
-      <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="titlefailed" aria-hidden="true" id="questionSubmitionFailed" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title" id="titlefailed">Error Submitting Question..</h3>
-                    </div>
-                    <div class="modal-body">
-                        <h3>Unable to submit question.</h3>
-                        <p>There was an error submitting your question. Make sure that all fields are correct. Also submission requires you to be activley logged in.</p>
-                    </div>
-                     <div class="modal-footer">
-                        <a onclick="closeFailedModal()" id="greenbutton" type="button" class="btn">Try Again</a>
-                        <a href="index.php" type="button" class="btn btn-warning">Go Home</a>
-                      </div>
-                </div>
-            </div>
-      </div> <!--end question failed modal -->
-        
         
     </div> <!-- end content for bootstrap -->
       

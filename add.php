@@ -143,13 +143,13 @@
                   <input type="radio" name="multipleChoiceCorrectAnswer" id="inlineRadio1" value="1">Answer 1
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="multipleChoiceCorrectAnswer" id="inlineRadio2" value="3">Answer 2
+                  <input type="radio" name="multipleChoiceCorrectAnswer" id="inlineRadio2" value="2">Answer 2
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="multipleChoiceCorrectAnswer" id="inlineRadio3" value="5">Answer 3
+                  <input type="radio" name="multipleChoiceCorrectAnswer" id="inlineRadio3" value="3">Answer 3
                 </label>
                   <label class="radio-inline">
-                  <input type="radio" name="multipleChoiceCorrectAnswer" id="inlineRadio3" value="11">Answer 4
+                  <input type="radio" name="multipleChoiceCorrectAnswer" id="inlineRadio3" value="4">Answer 4
                 </label>
                   <br />
                   <p id="multipleChoiceError" class="haserror"></p>
