@@ -15,7 +15,7 @@ For the initial version it will be running on Ubuntu 14.10.
 
 *Version: 1.0
 
-*Once released it will be seen on [HERE](http://www.fsolis.net)
+*Once released it will be seen on [HERE](http://www.fsolis.net/InterviewQuest)
 
 ### How do I get set up? ###
 
