@@ -5,7 +5,7 @@ InterviewQuest
 A web application that allows the user to add their own interview questions with answers and also practice with quizzes that use saved questions and answers. 
 
 
-This applications will use PHP, HTML, MySQL, BootStrap3.
+This applications will use PHP, HTML, MySQL, JavaScript, and BootStrap3.
 
 The back end will be ran on a PHP Server based on a Linux Distro. 
 
