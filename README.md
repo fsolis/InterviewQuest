@@ -60,11 +60,11 @@ For the initial version it will be running on Ubuntu 14.10.
 *( If this is not shown there have been errors in the PHP installation)
 
 ##Set Up Script ##
-*A script can be found in the resources folder named webServerSetupScript.
-*To run this script. Enter the following commands:
-*cd resources/
-*chmod 777 webServerSetupScript
-*./webServerScript
+* A script can be found in the resources folder named webServerSetupScript.
+* To run this script. Enter the following commands:
+* cd resources/
+* chmod 777 webServerSetupScript
+* ./webServerScript
 
 #### Configuration ####
 ##### Apache server #####
@@ -76,9 +76,9 @@ For the initial version it will be running on Ubuntu 14.10.
 * N/A
 
 #### Database configuration 
-*Using phpMyAdmin you can run the sql found in the resource 
-*folder. You must create a database named InterviewQuest and then 
-*run these commands.
+* Using phpMyAdmin you can run the sql found in the resource 
+* folder. You must create a database named InterviewQuest and then 
+* run these commands.
 
 #### How to run tests ####
 * Test creation in progress. JavaScript will 
