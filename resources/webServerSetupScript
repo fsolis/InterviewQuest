@@ -1,0 +1,67 @@
+#! /bin/bash
+
+#this script is to set up a lamp server using ubuntu linux
+#1/7/2014
+#I am not responsible for anything unwanted this script might
+#do to your machnine. You are using this at your own risk. 
+
+echo "Hello $USER "
+echo " "
+echo "This script will install a LAMP server on your machine."
+echo "Install this software at your own risk, I am not responsible "
+echo "for any issues that might be caused by this installation. "
+echo "This script will also update all your software. "
+echo "This script assumes you have root(sudo) priviliges, "
+echo "your password will be asked for."
+echo " "
+echo "Do you wish to continue with this installation? (yes/no): "
+read answer
+if [ "$answer" = "yes" ]
+then
+	echo "Installation Started..."
+	echo " "
+
+	echo "Updating repositories.... "
+	sudo apt-get update
+	echo " "
+
+	echo "Upgrading software to newest software.... "
+	sudo apt-get -y upgrade
+	echo " "
+
+	echo "Installing Apache Server "
+	sudo apt-get -y install apache2
+	echo " "
+
+	echo "Installing MySQL Server "
+	sudo apt-get -y install mysql-server
+	echo " "
+
+	echo "Installing PHP "
+	sudo apt-get -y install php5 libapache2-mod-php5
+	echo " "
+
+	echo 'Checking to see if PHP is working'
+	php -r 'echo "\n\nYour PHP installation is working fine. \n\n\n";'
+	echo " "
+
+	echo "Would you like to install PHPMyADMIN as well (yes/no)?"
+	read answer
+	if [ "$answer" = "yes" ]
+	then
+		echo "Installing PHPMyAdmin.... "
+		sudo apt-get -y install phpmyadmin
+		echo " "
+	else
+		echo "Will NOT install PHPMyAdmin.... "
+		echo " "
+	fi
+	
+else
+	echo "You did not enter 'yes', nothing will be installed on your machine"
+	echo "If you accidently entered something other than 'yes',"
+	echo "re-run this script and enter it correctly "
+	echo " "
+	echo "Have a great day $USER " 
+fi
+

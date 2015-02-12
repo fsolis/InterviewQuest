@@ -1,0 +1,89 @@
+--
+-- Database: `InterviewQuest`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Languages`
+--
+
+CREATE TABLE IF NOT EXISTS `Languages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `languageName` varchar(25) NOT NULL COMMENT 'Name of programming language',
+  `imageOfLanguage` varchar(150) NOT NULL COMMENT 'Name of the image to be loaded',
+  `userID` int(11) NOT NULL COMMENT 'This is the ID of the user that submitted the language',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='This table holds the programming languages supported by InterviewQuest' AUTO_INCREMENT=19 ;
+
+--
+-- Dumping data for table `Languages`
+--
+
+INSERT INTO `Languages` (`id`, `languageName`, `imageOfLanguage`, `userID`) VALUES
+(1, 'C++', '', 14),
+(2, 'PHP', '', 14),
+(3, 'C', '', 14),
+(4, 'JavaScript', '', 14),
+(5, 'CSS', '', 14),
+(6, 'HTML 5', '', 14),
+(7, 'MySQL', '', 14),
+(8, 'Java', '', 14),
+(9, 'JQuery', '', 14),
+(10, 'Python', '', 14),
+(11, 'Maven', '', 14),
+(12, 'Ruby', '', 14),
+(13, 'Objective-C', '', 14),
+(14, 'iOS', '', 14),
+(15, 'Android', '', 14),
+(16, 'Linux', '', 14),
+(17, 'BASH', '', 14),
+(18, '.NET', '', 14);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Questions`
+--
+
+CREATE TABLE IF NOT EXISTS `Questions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `languageID` int(11) NOT NULL COMMENT 'primary id from languages table',
+  `userID` int(11) NOT NULL COMMENT 'ID of user who submitted the question',
+  `question` varchar(500) NOT NULL COMMENT 'question',
+  `answer1` varchar(500) NOT NULL COMMENT 'answer number 1',
+  `answer2` varchar(500) NOT NULL COMMENT 'answer number 2',
+  `answer3` varchar(500) NOT NULL COMMENT 'answer number 3',
+  `answer4` varchar(500) NOT NULL COMMENT 'answer number 4',
+  `type` varchar(2) NOT NULL COMMENT 'type of answer i.e. multiple choice(MC), multiple answer (MA)',
+  `difficulty` int(2) NOT NULL COMMENT 'displays difficulty of question 1 easy 4 hard',
+  `correctAnswer` varchar(4) NOT NULL COMMENT 'correct answers, a=1, b=3,c=5,d=11 add up combinations',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='this table will contain the questions and answers for all languages' AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `Questions`
+--
+
+INSERT INTO `Questions` (`id`, `languageID`, `userID`, `question`, `answer1`, `answer2`, `answer3`, `answer4`, `type`, `difficulty`, `correctAnswer`) VALUES
+(1, 5, 14, 'What does CSS stand for?', 'Cascading Style Sheet', '', '', '', 'SA', 1, '1'),
+(8, 5, 14, 'Which of these is correct when modifying an element with and id ''inside'' within a class ''outside''? ', '#inside,.outside ', '.outside,#inside', 'outside, inside', 'inside,.outside', 'MC', 1, '2'),
+(9, 5, 14, 'Which of these adds a border to an element''?', 'border 4px solid black;', 'border 2px black;', 'border black;', 'border 3px dashed black;', 'MA', 1, '12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Users`
+--
+
+CREATE TABLE IF NOT EXISTS `Users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userID` varchar(35) NOT NULL COMMENT 'unique name for each user',
+  `password` varchar(160) NOT NULL COMMENT 'password for user',
+  `adminRights` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'determines whether admin rights are held',
+  `firstName` varchar(35) NOT NULL COMMENT 'first name of the user',
+  `lastName` varchar(50) NOT NULL COMMENT 'last name of the user',
+  `email` varchar(100) NOT NULL COMMENT 'email address of the user',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `userID` (`userID`,`email`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='this will store the user information of all registered users' AUTO_INCREMENT=22 ;
