@@ -59,6 +59,12 @@ For the initial version it will be running on Ubuntu 14.10.
 *( You should see a message that says 'Your PHP installation is working fine.')
 *( If this is not shown there have been errors in the PHP installation)
 
+##Set Up Script ##
+*A script can be found in the resources folder named webServerSetupScript.
+*To run this script. Enter the following commands:
+*cd resources/
+*chmod 777 webServerSetupScript
+*./webServerScript
 
 #### Configuration ####
 ##### Apache server #####
@@ -70,10 +76,13 @@ For the initial version it will be running on Ubuntu 14.10.
 * N/A
 
 #### Database configuration 
-* N/A
+*Using phpMyAdmin you can run the sql found in the resource 
+*folder. You must create a database named InterviewQuest and then 
+*run these commands.
 
 #### How to run tests ####
-* N/A
+* Test creation in progress. JavaScript will 
+* be tested using QUnit. 
 
 #### Initial Repository Clone ####
 * THIS STEP ASSUMES YOU HAVE YOUR COMPUTER PRIVATE KEY ASSOCIATED WITH YOUR ACCOUNT
