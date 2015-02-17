@@ -36,7 +36,7 @@ function submitVerifiedLanguage() {
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest();
     }
-    xmlhttp.open("GET", "http://localhost/interviewQuest/utilities.php?type=submitNewLanguage&languageName=" + $("input[name=newLanguageName]").val(), true);
+    xmlhttp.open("GET", "http://localhost/InterviewQuest/utilities.php?type=submitNewLanguage&languageName=" + $("input[name=newLanguageName]").val(), true);
     xmlhttp.send();
             
     xmlhttp.onreadystatechange = function () {
@@ -62,7 +62,7 @@ function verifyNewLanguage() {
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest();
     }
-    xmlhttp.open("GET", "http://localhost/interviewQuest/utilities.php?type=checkLanguage&languageName=" + $("input[name=newLanguageName]").val(), true);
+    xmlhttp.open("GET", "http://localhost/InterviewQuest/utilities.php?type=checkLanguage&languageName=" + $("input[name=newLanguageName]").val(), true);
     xmlhttp.send();
             
     xmlhttp.onreadystatechange = function () {
@@ -122,7 +122,7 @@ function submitValidated(variables) {
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest();
     }
-    xmlhttp.open("POST", "http://localhost/interviewQuest/utilities.php", true);
+    xmlhttp.open("POST", "http://localhost/InterviewQuest/utilities.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send(variables);
             

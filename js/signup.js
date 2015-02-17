@@ -65,7 +65,7 @@ function submitUser() {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
         }
-        xmlhttp.open("POST", "http://localhost/interviewQuest/utilities.php", true);
+        xmlhttp.open("POST", "http://localhost/InterviewQuest/utilities.php", true);
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send(variables);
         xmlhttp.onreadystatechange = function () {
@@ -134,7 +134,7 @@ $(document).ready(function () {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
         }
-        xmlhttp.open("GET", "http://localhost/interviewQuest/utilities.php?type=checkusername&username=" + $("input[name=username]").val(), true);
+        xmlhttp.open("GET", "http://localhost/InterviewQuest/utilities.php?type=checkusername&username=" + $("input[name=username]").val(), true);
         xmlhttp.send();
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
@@ -158,7 +158,7 @@ $(document).ready(function () {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
         }
-        xmlhttp.open("GET", "http://localhost/interviewQuest/utilities.php?type=checkemail&email=" + $("input[name=email]").val(), true);
+        xmlhttp.open("GET", "http://localhost/InterviewQuest/utilities.php?type=checkemail&email=" + $("input[name=email]").val(), true);
         xmlhttp.send();
             
         xmlhttp.onreadystatechange = function () {

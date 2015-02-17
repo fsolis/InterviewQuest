@@ -23,7 +23,7 @@ $(document).ready(function () {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
         }
-        xmlhttp.open("GET", "http://localhost/interviewQuest/utilities.php?type=checkusername&username=" + $("input[name=username]").val(), true);
+        xmlhttp.open("GET", "http://localhost/InterviewQuest/utilities.php?type=checkusername&username=" + $("input[name=username]").val(), true);
         xmlhttp.send();
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
@@ -52,7 +52,7 @@ function attemptLogin() {
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest();
     }
-    xmlhttp.open("POST", "http://localhost/interviewQuest/utilities.php", true);
+    xmlhttp.open("POST", "http://localhost/InterviewQuest/utilities.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send(variables);
     xmlhttp.onreadystatechange = function () {
@@ -61,7 +61,7 @@ function attemptLogin() {
             if (response === "1") { //false
                 document.getElementById("errorcode").innerHTML="Wrong Username or Password";
             } else if (response === "0") {
-                window.location = 'http://localhost/interviewQuest/index.php';
+                window.location = 'http://localhost/InterviewQuest/index.php';
             }
         }
     }

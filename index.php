@@ -14,13 +14,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Interview Quest</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/styles.css" rel="stylesheet"> 
+    <link href="css/nstyles.css" rel="stylesheet"> 
       
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,38 +32,31 @@
   <body>
       <!-- Container that will hold all content so that elements get bootstrap css -->
     <div class="container">
-        
-        <!-- start navigation bar -->
-      <div id="navbar">
-          <div id="navbar-left">
-            <a href="#"><img id="navbarlogo" src="images/indexLogo.png"></a>
-          </div>
-          <div id="navbar-right">
-            <?php
-                //check to see if user is logged in and display appropriate buttons
-                if(isset($_SESSION['loggedin'])){
-                    echo " Welcome, ".$_SESSION['firstName'];
-                    echo "<a href=\"logout.php\"><button type=\"button\" id=\"greenbutton\" class=\"btn btn-default btn-lg\"> Sign Out</button></a>";
-                }else{
-                    echo "<button href=\"#login\" data-toggle=\"modal\" type=\"button\" id=\"greenbutton\" class=\"btn btn-default btn-lg\">Sign In</button>";
-                    echo "<a href=\"signup.php\"><button type=\"button\" id=\"greenbutton\" class=\"btn btn-default btn-lg\">Sign Up</button></a>";
-               }
-            ?>
-          </div>
-      </div><!--End navigation bar -->
-      
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li><a  href="#login" data-toggle="modal" class="btn" id="greenbutton">Sign In</a></li>
+            <li><a href="signup.php"  class="btn" id="greenbutton">Sign Up</a></li>
+          </ul>
+        </nav>
+          <h3 id="greentext" class="text-muted"><b>InterviewQuest</b></h3>
+      </div>
+    </div>
+    <div class="container">
         <br />
-        
         <!-- start logo -->    
-      <div id="indexcontent"> 
-          <a href="start.php"> <img id="indexstartlogo" src="images/interviewQuestindext%20logo.png"> </a>
+      <div class="centerImage"> 
+          <a href="start.php"> <img  src="images/interviewQuestindext%20logo.png"> </a>
           
       </div><!-- end start logo -->
-        
-        <!--start footer -->
-      <div id="footer">
-            <a href="about.php"> <button type="button" id="aboutbutton" class="btn btn-default btn-lg">About</button></a>
-      </div><!--end footer -->
+    <br /> <br />
+      
+    <footer class="footer">
+      <div class="container">
+        <a href="about.php" class="btn" id="greenbutton">About</a>
+      </div>
+    </footer>
+    </div>
         
         <!-- Start Login Modal -->
 		<div class="modal fade" id="login" role="dialog" data-keyboard="false" data-backdrop="static">
@@ -104,7 +97,8 @@
 			</div>
 		</div>
 		<!-- End Login Modal -->
-      </div> <!--End content -->
+      
+      
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
