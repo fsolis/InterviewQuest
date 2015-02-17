@@ -103,3 +103,15 @@ img {
 .navbar-brand {
     max-width: 50%;
 }
+
+#greenText{
+    color: #008000;   
+}
+
+#greenText:hover{
+    background-color: #fff;   
+}
+
+#logoimg{
+    height: 55px;   
+}

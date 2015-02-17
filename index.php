@@ -35,11 +35,19 @@
       <div class="header">
         <nav>
           <ul class="nav nav-pills pull-right">
-            <li><a  href="#login" data-toggle="modal" class="btn" id="greenbutton">Sign In</a></li>
-            <li><a href="signup.php"  class="btn" id="greenbutton">Sign Up</a></li>
+              <?php
+                if(isset($_SESSION['loggedin'])){
+                    echo "<li><a id=\"greenText\">Hello, ". $_SESSION['firstName']."</a></li>";
+                    echo "<li><a href=\"logout.php\" class=\"btn\" id=\"greenbutton\">Sign Out</a></li>";
+                } else {
+                    echo "<li><a  href=\"#login\" data-toggle=\"modal\" class=\"btn\" id=\"greenbutton\">Sign In</a></li>";
+                    echo "<li><a href=\"signup.php\"  class=\"btn\" id=\"greenbutton\">Sign Up</a></li>";
+                }
+
+              ?>
           </ul>
         </nav>
-          <h3 id="greentext" class="text-muted"><b>InterviewQuest</b></h3>
+          <img src="images/indexLogoInline.png" id="logoimg">
       </div>
     </div>
     <div class="container">
