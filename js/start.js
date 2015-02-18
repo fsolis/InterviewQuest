@@ -144,7 +144,7 @@ function getDifficulty() {
                 return "&difficulty=2";   
             } else if (name === "Advanced") {
                 return "&difficulty=3";   
-            } else if (name === "Experienced") {
+            } else if (name === "Senior Level") {
                 return "&difficulty=4";   
             }
         }
