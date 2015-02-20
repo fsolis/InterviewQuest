@@ -23,9 +23,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Interview Quest: Add</title>
+    <title>Interview Quest: Test</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- image for tab and favorite icon -->
+    <link rel="shortcut icon" type="image/ico" href="images/i.ico">
+    
+    <!-- allow resizing -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -39,30 +43,33 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+      
   </head>
   <body>
+      
+    <!-- Start navigation bar -->
+      <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+              <?php
+                if(isset($_SESSION['loggedin'])){
+                    echo "<li><a id=\"greenText\">Hello, ". $_SESSION['firstName']."</a></li>";
+                    echo "<li><a href=\"logout.php\" class=\"btn\" id=\"greenbutton\">Sign Out</a></li>";
+                } else {
+                    echo "<li><a  href=\"index.php\" class=\"btn\" id=\"greenbutton\">Home</a></li>";
+                    echo "<li><a href=\"signup.php\"  class=\"btn\" id=\"greenbutton\">Sign Up</a></li>";
+                }
+
+              ?>
+          </ul>
+        </nav>
+          <a href="index.php" ><img src="images/indexLogoInline.png" id="logoimg"></a>
+      </div>
+    </div> <!-- End navigation bar -->
+    
     <!-- Main container for content so that bootstrap is applied to elements -->
     <div class="container"> 
-      <!-- Navagation bar -->
-      <div id="navbar">
-          <div id="navbar-left">
-            <a href="index.php"><img id="navbarlogo" src="images/indexLogo.png"></a>
-          </div>
-          <div id="navbar-right">
-            <?php
-                //This will display user's name and signout button if logged in 
-                //otherwise it will redirect the user to the index page as only 
-                //questions can be submitted if logged in
-                if(isset($_SESSION['loggedin'])){
-                    echo " Welcome, ".$_SESSION['firstName'];
-                    echo "<a href=\"logout.php\"><button type=\"button\" id=\"greenbutton\" class=\"btn btn-default btn-lg\"> Sign Out</button></a>";
-                } else {
-                    echo "<a href=\"index.php\"><button type=\"button\" id=\"greenbutton\" class=\"btn btn-default btn-lg\">Home</button></a>";
-               }
-            ?>
-          </div>
-      </div> <!-- End Navigation bar -->
-        
       <br/>
       <!-- main page / test -->
       <div id="questions">
@@ -153,7 +160,7 @@
            		$stmt -> execute(array(":languageID"=>$_GET['1LangId'],":difficulty"=>$_GET['difficulty'],":language2ID"=>$_GET['2LangId'], ":difficulty2" => $_GET['difficulty'],":language3ID"=>$_GET['3LangId'], ":difficulty3" => $_GET['difficulty'],":language4ID"=>$_GET['4LangId'], ":difficulty4" => $_GET['difficulty'],":language5ID"=>$_GET['5LangId'], ":difficulty5" => $_GET['difficulty']));
            		$record = $stmt -> fetchAll();
 				if(empty($record)){
-					echo "<div><h1 class=\"center\">Sorry, No Questions Found</h1></div>";
+					echo "<div class=\"center\"><h1>Sorry, No Questions Found.</h1></div>";
 				}else{
 					displayRecords($record);
 				}
@@ -164,17 +171,17 @@
 				$i = 1;
 				foreach ($record as $row) {
 					echo "<div class=\"row\"><!--Start Question-->";
-					echo "<div class=\"col-md-12\"><h3>Q: ". $row['question'] ."</h3></div>";
+					echo "<div class=\"col-md-1\"><h3>Q:</h3></div><div class=\"col-md-11\"><h3>". $row['question'] ."</h3></div>";
 					if ($row['type'] == 'SA') {
 						echo "<div class=\"collapse\" id=\"answer".$i."\"collapseExample\">";
-						echo "<div class=\"col-md-12\"><h3> A: ". $row['answer1'] . "</h3></div>";
+						echo "<div class=\"col-md-1\"><h3>A:</h3></div><div class=\"col-md-11\"><h3>". $row['answer1'] . "</h3></div>";
 						echo "</div>";
 						echo "<div class=\"center\">";	
 						echo "<button class=\"btn btn-primary\" id=\"answerShow".$i."\" type=\"button\" data-toggle=\"collapse\" data-target=\"#answer".$i."\" aria-expanded=\"false\" aria-controls=\"answer".$i."\">Show Answer</button>";
 						echo "</div> <br />";	
                         echo "<div class=\"center\" id=\"answerFeedback".$i."\">";
-                        echo "<a class=\"btn btn-success\" type=\"button\" onclick=\"disableButtons(answerFeedback".$i.", 1,answerShow".$i.")\">Correct </a>";
-                        echo "<a class=\"btn btn-danger\" type=\"button\" onclick=\"disableButtons(answerFeedback".$i.",-1,answerShow".$i.")\"> Incorrect</a>";
+                        echo "<button class=\"btn btn-success\" type=\"button\" id=\"rightMargin\" onclick=\"disableButtons(answerFeedback".$i.", 1,answerShow".$i.")\">Correct</button>";
+                        echo "<button class=\"btn btn-danger\" type=\"button\" onclick=\"disableButtons(answerFeedback".$i.",-1,answerShow".$i.")\">Incorrect</button>";
                         echo "</div>";
 						$i++;
 					} else if ($row['type'] == 'MC'){
@@ -186,14 +193,14 @@
                         echo "<label class=\"radio-inline\">";
 						echo "<input type=\"radio\" name=\"multipleChoice".$i."\" id=\"multipleChoiceAnswer".$i."\" value=\"".$answer1."\">".$row['answer1'] ."</label></div>";
 						echo "<div class=\"col-md-12\">";
-						"<label class=\"radio-inline\">";
-						echo "<input type=\"radio\" name=\"multipleChoice".$i."\" id=\"multipleChoiceAnswer".$i."\" value=\"".$answer2."\">".$row['answer2'] ."</label></div>";
+						echo "<label class=\"radio-inline\">";
+						echo "<input type=\"radio\" name=\"multipleChoice".$i."\" id=\"multipleChoiceAnswer".$i."\" value=\"".$answer2."\"> ".$row['answer2'] ."</label></div>";
 						echo "<div class=\"col-md-12\">";
-						"<label class=\"radio-inline\">";
-						echo "<input type=\"radio\" name=\"multipleChoice".$i."\" id=\"multipleChoiceAnswer".$i."\" value=\"".$answer3."\">".$row['answer3'] ."</label></div>";
+						echo "<label class=\"radio-inline\">";
+						echo "<input type=\"radio\" name=\"multipleChoice".$i."\" id=\"multipleChoiceAnswer".$i."\" value=\"".$answer3."\"> ".$row['answer3'] ."</label></div>";
 						echo "<div class=\"col-md-12\">";
-						"<label class=\"radio-inline\">";
-						echo "<input type=\"radio\" name=\"multipleChoice".$i."\" id=\"multipleChoiceAnswer".$i."\" value=\"".$answer4."\">".$row['answer4'] ."</label></div>";
+						echo"<label class=\"radio-inline\">";
+						echo "<input type=\"radio\" name=\"multipleChoice".$i."\" id=\"multipleChoiceAnswer".$i."\" value=\"".$answer4."\"> ".$row['answer4'] ."</label></div>";
 						echo "<div class=\"center\">";
                         echo "<a class=\"btn btn-primary\" type=\"button\" id=\"multipleChoiceButton".$i."\" onclick=\"checkMultipleChoice(multipleChoiceAnswer".$i.",multipleChoiceButton".$i.")\">Check Answer</a>";
 						echo "</div>";
@@ -351,10 +358,13 @@
       
       ?>
       
-      <!-- start footer -->
-      <div id="signupfooter">
-            <a href="about.php"type="button" id="aboutbutton" class="btn btn-default btn-lg">About</a>
-      </div> <!--End footer -->
+      <br /> <br />
+      <!-- Start footer -->
+      <footer class="footer">
+      <div class="container">
+        <a href="about.php" class="btn" id="greenbutton">About</a>
+      </div>
+    </footer> <!-- End footer -->
         
     </div> <!-- end content for bootstrap -->
       

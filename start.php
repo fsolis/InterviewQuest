@@ -13,8 +13,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Interview Quest: Start</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    <!-- image for tab and favorite icon -->
+    <link rel="shortcut icon" type="image/ico" href="images/i.ico">
+      
+     <!-- This makes the site resizable -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -31,28 +35,28 @@
   </head>
   <body>
     <!-- Main container for content so that bootstrap is applied to elements -->
-    <div class="container"> 
-      <!-- Navagation bar -->
-      <div id="navbar">
-          <div id="navbar-left">
-            <a href="index.php"><img id="navbarlogo" src="images/indexLogo.png"></a>
-          </div>
-          <div id="navbar-right">
-            <?php
-                //This will display user's name and signout button if logged in 
-                //otherwise it will redirect the user to the index page as only 
-                //questions can be submitted if logged in
+    <!-- Start Header -->
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+              <?php
                 if(isset($_SESSION['loggedin'])){
-                    echo " Welcome, ".$_SESSION['firstName'];
-                    echo "<a href=\"logout.php\"><button type=\"button\" id=\"greenbutton\" class=\"btn btn-default btn-lg\"> Sign Out</button></a>";
+                    echo "<li><a id=\"greenText\">Hello, ". $_SESSION['firstName']."</a></li>";
+                    echo "<li><a href=\"logout.php\" class=\"btn\" id=\"greenbutton\">Sign Out</a></li>";
                 } else {
-                    echo "<a href=\"index.php\" id=\"greenbutton\" class=\"btn btn-lg\">Home</a>";
-                    echo "<a href=\"signup.php\"><button type=\"button\" id=\"greenbutton\" class=\"btn btn-default btn-lg\">Sign Up</button></a>";
-               }
-            ?>
-          </div>
-      </div> <!-- End Navigation bar -->
-        
+                    echo "<li><a  href=\"index.php\" class=\"btn\" id=\"greenbutton\">Home</a></li>";
+                    echo "<li><a href=\"signup.php\"  class=\"btn\" id=\"greenbutton\">Sign Up</a></li>";
+                }
+
+              ?>
+          </ul>
+        </nav>
+          <a href="index.php"><img src="images/indexLogoInline.png" id="logoimg"></a>
+      </div>
+    </div> <!-- End Header -->
+      
+    <div class="container"> 
       <br/>
       <!-- main page content -->
       <div id="addquestioncontent"> 
@@ -194,12 +198,14 @@
                 <a class="btn btn-lg" id="greenbutton" onclick="submitClicked()">Start Test!</a>
               </div><!--End submit button -->
         
-        
+        <br /><br />
     
-      <!-- start footer -->
-      <div id="signupfooter">
-            <a href="about.php"type="button" id="aboutbutton" class="btn btn-default btn-lg">About</a>
-      </div> <!--End footer -->
+      <!-- Start footer -->
+      <footer class="footer">
+      <div class="container">
+        <a href="about.php" class="btn" id="greenbutton">About</a>
+      </div>
+    </footer> <!-- End footer -->
         
         <!--start failed to modal -->    
       <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="titlefailed" aria-hidden="true" id="validationFailed" data-keyboard="false" data-backdrop="static">
@@ -210,7 +216,8 @@
                     </div>
                     <div class="modal-body">
                         <h3>Uh oh, Unable to continue.</h3>
-                        <h4 id="errorCode"></h4>
+                        <br />
+                        <h4 class="haserror" id="errorCode"></h4>
                     </div>
                      <div class="modal-footer">
                         <a onclick="closeError()" id="greenbutton" type="button" class="btn">Try Again</a>
@@ -227,9 +234,8 @@
                         <h3 class="modal-title" id="titlecontinue">Ready to Continue?</h3>
                     </div>
                     <div class="modal-body">
-                        <h4>If you are ready to continue, please choose so. Otherwise, click cancel and revise your answer</h4>
                         <div class="center">
-                            <a id="finalButton" class="btn btn-lg btn-primary">Continue!</a>
+                        <a id="finalButton" class="btn btn-lg btn-primary">Let's Go!</a>
                         </div>
                     </div>
                      <div class="modal-footer">

@@ -1,163 +1,127 @@
-.navbar{
- height: 50px;   
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-.container {
-  width: 950px;
-  max-width: none !important;
-  height: auto;
-  background-color: #fff;
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
-#navbar{
-    width:700px;
-    height: 75px;
-    margin-left: 125px;
-    padding-top: 5px;
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  padding-bottom: 19px;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
 }
 
-#navbarlogo {
-    height:75px;
-    width: auto;
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
 }
 
-#navbar-left {
-    float:left; 
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
 }
 
-#navbar-right {
-    height:75px; 
-    float:right;
-    padding-top: 25px;
-    width: 400px;
-    text-align: center;
-    
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
 }
 
-#navbar-right, a{
-    padding-left: 15px;
-    font-size: 1.2em;
-    color: #008000;
-    
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
 }
 
-#navbar-right,a:hover{
-    color:black   
-}
-#about{
-    width:700px;
-    height:385px;
-    margin-top:25px;
-    margin-left:125px;
-    border-bottom: 1px solid black;
-    
-}
-
-#statement{
-    float: left;
-    padding-left: 15px;
-    padding-right: 15px;
-    pading-bottom: 15px;
-    width:475px;
-    height: 375px;
-   
-}
-
-#centerheader{
-    text-align: center;
-    color:#008000;
-}
-
-#aboutstatement{
-    
-}
-
-#abouti {
-    height:200px;
-    margin-left: 12px;
-    margin-top: 87.5px;
-    margin-bottom: 87.5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-#topics{
-    height:345px;  
-    margin-left:125px;
-}
-
-.language {
-    height: 115px;
-    width:auto;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: #008000;
-}
-
-#row{  
-    width:700px;
-    font-size: 3.5em;
-    padding-left: 70px;
-    color:#008000;
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
 }
 
 #greenbutton{
-    background-color:#008000 !important;
+    background-color: #008000;
     color: #fff !important;
+    border-radius: 5px;
 }
 
 #greenbutton:hover{
-    
-    color: black !important;
+    background-color: lightgrey;
+    color: #008000 !important;
 }
 
-#indexcontent{
-    width:605px;
-    height: 600px;
-    margin-left: 125px;
-    
+#greentext {
+    color: #008000;   
 }
 
-#signupcontent{
-    width:605px;
-    margin-top: 50px;
-    margin-left: 125px;
+img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    //margin-left: -15px;
 }
 
-#addquestioncontent{
-    width:605px;
-    margin-top: 50px;
-    margin-left: 125px;
+.navbar-brand {
+    max-width: 50%;
 }
 
-#footer{
-  border-radius: 5px;
-  margin-left: 125px;
-  margin-top: 50px;
-  width:605px;
+#greenText{
+    color: #008000;   
 }
 
-#signupfooter{
-  border-radius: 5px;
-  margin-left: 125px;
-  margin-top: 100px;
-  width:605px;
+#greenText:hover{
+    background-color: #fff;   
 }
 
-
-#aboutbutton{
-    margin-left:500px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    color:#008000 !important;
+#logoimg{
+    height: 50px;   
 }
 
-#indexstartlogo{
-    width:595px;
-    margin-top: 25px;
+.center{
+    text-align: center;
 }
 
-#welcomeMessage{
-    margin-left: 7px;   
+#errorcode {
+    text-align: center;
 }
 
 #pageHeader{
@@ -165,12 +129,14 @@
     color: #008000;
 }
 
-#loadingbody{
-    height: 150px;   
+#chosen {
+    color: black !important;
+    border: 1px solid black;
 }
 
-#errorcode {
+.haserror {
     text-align: center;
+    color: red;
 }
 
 .invisible{
@@ -183,22 +149,28 @@
     display: block;
 }
 
-.haserror {
-    text-align: center;
-    color: red;
+#loadingbody{
+    height: 150px;   
 }
-
-.center {
+#center{
     text-align: center;
 }
 
-#chosen {
-    color: black !important;
-    border: 1px solid black;
+#rightMargin{
+    margin-right: 5px;   
 }
 
-#questions {
-	width:605px;
-    margin-top: 50px;
-    margin-left: 125px;
+#githubButton{
+  border: 2.5px solid lightblue;
+  color: black;     
+}
+
+#githubButton:hover{
+   color:white;
+   background-color: black;
+   border: 2.5px solid white;
+}
+
+.indented{
+    margin-left: 15px;   
 }

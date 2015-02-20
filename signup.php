@@ -13,8 +13,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Interview Quest: Sign Up</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    <!-- image for tab and favorite icon -->
+    <link rel="shortcut icon" type="image/ico" href="images/i.ico">
+    
+    <!-- allow resizing -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -31,24 +35,27 @@
   </head>
   <body>
       <!-- container to hold all elements so that bootstrap can be applied to them -->
-    <div class="container">
-        <!-- Start navigation bar -->
-      <div id="navbar">
-          <div id="navbar-left">
-            <a href="index.php"><img id="navbarlogo" src="images/indexLogo.png"></a>
-          </div>
-          <div id="navbar-right">
-            <?php
-                //if logged in will display user name and signout button other wise will display home button
+      <!-- Start navigation bar -->
+      <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+              <?php
                 if(isset($_SESSION['loggedin'])){
-                    echo " Welcome,".$_SESSION['firstName'];
-                    echo "<a href=\"logout.php\"><button type=\"button\" id=\"greenbutton\" class=\"btn btn-default btn-lg\"> Sign Out</button></a>";
-                }else{
-                    echo "<a href=\"index.php\"><button type=\"button\" id=\"greenbutton\" class=\"btn btn-default btn-lg\">Home</button></a>";
-               }
-            ?>
-          </div>
-      </div> <!-- End navigation bar -->
+                    echo "<li><a id=\"greenText\">Hello, ". $_SESSION['firstName']."</a></li>";
+                    echo "<li><a href=\"logout.php\" class=\"btn\" id=\"greenbutton\">Sign Out</a></li>";
+                } else {
+                    echo "<li><a  href=\"index.php\" class=\"btn\" id=\"greenbutton\">Home</a></li>";
+                    echo "<li><a href=\"signup.php\"  class=\"btn\" id=\"greenbutton\">Sign Up</a></li>";
+                }
+
+              ?>
+          </ul>
+        </nav>
+          <a href="index.php" ><img src="images/indexLogoInline.png" id="logoimg"></a>
+      </div>
+    </div> <!-- End navigation bar -->
+    <div class="container">
       <br>
         <!-- Start signup form -->
       <div id="signupcontent"> 
@@ -73,14 +80,23 @@
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email" required placeholder="email@email.com">
               </div>
-              <button  id="submitbutton" type="button" onclick="submitUser()" class="btn btn-primary">Submit</button>
+              <div class="haserror">
+                <h5 id="errorMessage"></h5>
+              </div>
+              <div class="center">
+                    <button  id="submitbutton" type="button" onclick="submitUser()" class="btn btn-primary">Submit</button>
+              </div>
         </form>
       </div> <!-- End signup form -->
+      <br />
+      <br />
         
-        <!-- Start footer -->
-      <div id="signupfooter">
-            <a href="about.php"> <button type="button" id="aboutbutton" class="btn btn-default btn-lg">About</button></a>
-      </div> <!-- End footer -->
+    <!-- Start footer -->
+      <footer class="footer">
+      <div class="container">
+        <a href="about.php" class="btn" id="greenbutton">About</a>
+      </div>
+    </footer> <!-- End footer -->
 
         <!-- Start modal that displays a successfully registered message -->
         <div class="modal fade " tabindex="-1" role="dialog" aria-labelledby="success" aria-hidden="true" id="successModal" data-keyboard="false" data-backdrop="static">

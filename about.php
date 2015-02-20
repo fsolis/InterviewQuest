@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Interview Quest: About</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- image for tab and favorite icon -->
+    <link rel="shortcut icon" type="image/ico" href="images/i.ico">
+      
+     <!-- This makes the site resizable -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -19,74 +23,87 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+      
   </head>
   <body>
+      
+      <!-- Start Header -->
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+              <?php
+                if(isset($_SESSION['loggedin'])){
+                    echo "<li><a id=\"greenText\">Hello, ". $_SESSION['firstName']."</a></li>";
+                    echo "<li><a href=\"logout.php\" class=\"btn\" id=\"greenbutton\">Sign Out</a></li>";
+                } else {
+                    echo "<li><a  href=\"index.php\" class=\"btn\" id=\"greenbutton\">Home</a></li>";
+                    echo "<li><a href=\"signup.php\"  class=\"btn\" id=\"greenbutton\">Sign Up</a></li>";
+                }
+
+              ?>
+          </ul>
+        </nav>
+          <a href="index.php"><img src="images/indexLogoInline.png" id="logoimg"></a>
+      </div>
+    </div> <!-- End Header -->
       <!-- Container that will hold all content so that elements get bootstrap css -->
     <div class="container">
-        
-        <!-- start navigation bar -->
-      <div id="navbar">
-          <div id="navbar-left">
-            <a href="#"><img id="navbarlogo" src="images/indexLogo.png"></a>
-          </div>
-          <div id="navbar-right">
-            <a href="index.php"> Home </a>
-          </div>
-      </div> <!--end navigation bar -->
-        
       <br>
         <!-- start about content -->
-      <div id="about">
-          <div id="statement">
-            <div id="centerheader">
-                <h1>About</h1>
+      <div>
+            <div class="center">
+                <h1 id="greenText"><b>About</b></h1>
             </div>
-            <div id="aboutstatement">
-                <p>
-                    Interview Quest is the first step to landing your next job in the Computer Science field. Whether you are a recent college graduate entering the work force or an experienced developer looking to find another job, Interview Quest is here to help. The famed Technical interview makes everyone nervous, not becuase of our lack of confidence in our abilities, because of the uncertanty of what questions might be asked. More often than not when we study for an interview we often struggle to find questions that might fit the level of the interview. Sometimes we only focus on the harder questions and when we are asked simple questions we often end up looking like amateurs. Here at Interview Quest we will try to find a balance to help you get that job. However it doesn't end there. We are developers, programmers, software aficionados and we have to stick together. Have a question you think might stump someone? Submit it! Found a question that isn't correct? Report it! We are a community, and we are here to help!
-                </p>
+            <br />
+          
+          <div><h3><b>What is InterviewQuest?</b></h3></div>
+            <div class="indented">
+                <p>InterviewQuest is a site that aims to help facilitate studying for the dreaded Technical Interview. Often sample questions for technical interviews are hidden deep in web forums and answers are often worded arbitarily which usually leaves us more nervous and confused than when we started. InterviewQuest hopes to make studying easier by providing a variety of questions with simple answers in a mock 'interview style' test. </p>
             </div>
-          </div>
-          <div id="logo">
-            <img id="abouti" src="images/i.png">
-          </div>
-      </div><!-- end about statement -->
-        
-        <br>
-        
-        <!--start supported languages -->
-      <div id="languages">
-          <div id="centerheader">
-                <h1> Languages </h1>
-          </div>
-          <div id="topics">
-            <div id="row">
-                PHP,
-                MySQL,
-                C++,
-                C,
+          
+            <div><h3>How Does It Work?</h3></div>
+            <div class="indented">
+                <p>InterviewQuest is a mock interview test. When you land on the home page. Click START! From here you will be asked to chose the desired topics you want to study, the level of difficulty the questions will fall under, lastly you will choose the number of questions you want to answer. That's It! Your questions will then show up. Don't worry too much if are unsure of the specific steps just do the best you can, if you forget to input something the site will let you know what that is.</p>
             </div>
-            <div id="row">
-                Python,
-                Ruby,
-                Java,
-                Git
+            <div><h3>What Topics Can I Study?</h3></div>
+            <div class="indented">
+                <h4>Currently Supported:</h4>
+                <div class="row" id="greenText">
+                    <div class="col-sm-2"><h6>Algorithms</h6></div>
+                    <div class="col-sm-2"><h6>Android</h6></div>
+                    <div class="col-sm-2"><h6>BASH</h6></div>
+                    <div class="col-sm-2"><h6>C</h6></div>
+                    <div class="col-sm-2"><h6>C++</h6></div>
+                    <div class="col-sm-2"><h6>CSS</h6></div>
+                </div>
+                <div class="row" id="greenText">
+                    <div class="col-sm-2"><h6>Data Structures</h6></div>
+                    <div class="col-sm-2"><h6>Design Patterns</h6></div>
+                    <div class="col-sm-2"><h6>HTML5</h6></div>
+                    <div class="col-sm-2"><h6>Java</h6></div>
+                    <div class="col-sm-2"><h6>JavaScript</h6></div>
+                    <div class="col-sm-2"><h6>Software Engineering</h6></div>
+                </div>
+                <div class="row"><div class="col-sm-12" id="center">And Many More! We're Just Trying To Conserve Space.</div></div>
+            </div> 
+            <div class="indented">
+                <h4>Don't See The Topic You Wanted?</h4>
+                <p>Don't worry, topics are added constantly. Don't want to wait? <b>Sign Up</b> and add it yourself. InterviewQuest can be a great learning tool as well! </p>
             </div>
-            <div id="row">
-                CSS, HTML, JavaScript and More.
-            </div>
-          </div>
-      </div> <!-- end supported languages -->
-        
-        <!-- Start skill levels information -->
-      <div id="skilllevels">
-      
-          <div id="centerheader">
-                <h1> Skill Levels </h1>
-          </div>
       </div> <!-- end skill level information -->
-        
+      
+        <br /> <br />
+        <!-- Start footer -->
+      <footer class="footer">
+      <div class="container">
+        <a href="https://github.com/fsolis/InterviewQuest" class="btn" id="githubButton">Join Github Project</a>
+        <a class="btn" id="greenbutton">Contact Creator</a>
+      </div>
+    </footer> <!-- End footer -->
     </div> <!--end container -->
+      
+      
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

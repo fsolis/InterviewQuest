@@ -3,6 +3,24 @@
 //This page will contain the functions that deal 
 //with asychronous registration and signup.php animations
 
+//this function will be called given an error code to display.
+function setError(error) {
+    "use strict";
+    var currentErrorDiv = document.getElementById("errorMessage");
+    if (currentErrorDiv.innerHTML !== error){
+        currentErrorDiv.innerHTML = error;
+    }
+}
+
+//this function will be called to remove error message but only that error message
+function removeError(error) {
+    "use strict";
+    var currentErrorDiv = document.getElementById("errorMessage");
+    if (currentErrorDiv.innerHTML === error) {
+        currentErrorDiv.innerHTML = "";
+    }
+}
+
 //this function disables submit button and shows that username is not available
 function usernameFailed() {
     "use strict";
@@ -11,6 +29,7 @@ function usernameFailed() {
     var usernameFeedback = document.getElementById("usernamesybmol");
     submitButton.disabled = true;
     username.setAttribute("class", "form-group has-error has-feedback");
+    setError("Username Already Exists.");
 }
 
 //this function enables submit button and displays success on available username
@@ -23,8 +42,10 @@ function usernamePassed() {
     if (email.className !== "form-group has-error has-feedback") {
         submitButton.disabled = false;
         username.setAttribute("class", "form-group has-success has-feedback");
+        removeError("Username Already Exists.");
     } else {
         username.setAttribute("class", "form-group has-success has-feedback");
+        setError("Email Already Exists.");
     }
 }
 
@@ -35,6 +56,7 @@ function emailFailed() {
     var email = document.getElementById("emailfeedback");
     submitButton.disabled = true;
     email.setAttribute("class", "form-group has-error has-feedback");
+    setError("Email Already Exists.");
 }
 
 //this fucntion enables submit button and displays success on available email
@@ -47,8 +69,10 @@ function emailPassed() {
     if (username.className !== "form-group has-error has-feedback") {
         submitButton.disabled = false;
         email.setAttribute("class", "form-group has-success has-feedback");
+        removeError("Email Already Exists.");
     } else {
         email.setAttribute("class", "form-group has-success has-feedback");
+        setError("Username Already Exists.");
     }
 }
 
@@ -65,7 +89,8 @@ function submitUser() {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
         }
-        xmlhttp.open("POST", "http://localhost/InterviewQuest/utilities.php", true);
+        //change URL when moving to new enviorment
+        xmlhttp.open("POST", "http://localhost/interviewQuest/utilities.php", true);
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send(variables);
         xmlhttp.onreadystatechange = function () {
@@ -113,6 +138,7 @@ function validateInput() {
     if (passed) {
           return "type=register&username=" + username + "&password=" + password + "&firstName=" + firstName + "&lastName=" + lastName + "&email=" + email;
     } else {
+          setError("All Fields Must Have A Valid Input.");
           return "";   
     }
 }
@@ -134,7 +160,8 @@ $(document).ready(function () {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
         }
-        xmlhttp.open("GET", "http://localhost/InterviewQuest/utilities.php?type=checkusername&username=" + $("input[name=username]").val(), true);
+        //change URL when moving to new enviorment
+        xmlhttp.open("GET", "http://localhost/interviewQuest/utilities.php?type=checkusername&username=" + $("input[name=username]").val(), true);
         xmlhttp.send();
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
@@ -158,7 +185,8 @@ $(document).ready(function () {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
         }
-        xmlhttp.open("GET", "http://localhost/InterviewQuest/utilities.php?type=checkemail&email=" + $("input[name=email]").val(), true);
+        //change URL when moving to new enviorment
+        xmlhttp.open("GET", "http://localhost/interviewQuest/utilities.php?type=checkemail&email=" + $("input[name=email]").val(), true);
         xmlhttp.send();
             
         xmlhttp.onreadystatechange = function () {

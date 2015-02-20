@@ -15,6 +15,21 @@ function usernamePassed() {
     username.setAttribute("class", "form-group has-success has-feedback");
 }
 
+//This is called while the sytem attempts to log in. 
+function disableButtonsLoading() {
+    var cancelButton = document.getElementById("cancelButton");
+    var submitButton = document.getElementById("loginButton");
+    cancelButton.disabled = true;
+    submitButton.disabled = true;
+}
+
+//This function is called when log in response is recieved. 
+function enableButtonsLoading() {
+    var cancelButton = document.getElementById("cancelButton");
+    var submitButton = document.getElementById("loginButton");
+    cancelButton.disabled = false;
+    submitButton.disabled = false;   
+}
 //Jquery functions that listen to certain inputs
 $(document).ready(function () {
        //this function listens to the username input field 
@@ -23,7 +38,8 @@ $(document).ready(function () {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
         }
-        xmlhttp.open("GET", "http://localhost/InterviewQuest/utilities.php?type=checkusername&username=" + $("input[name=username]").val(), true);
+        //change URL when changing to new platform
+        xmlhttp.open("GET", "http://localhost/interviewQuest/utilities.php?type=checkusername&username=" + $("input[name=username]").val(), true);
         xmlhttp.send();
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
@@ -52,16 +68,21 @@ function attemptLogin() {
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest();
     }
-    xmlhttp.open("POST", "http://localhost/InterviewQuest/utilities.php", true);
+    //change URL when changing to new platform
+    xmlhttp.open("POST", "http://localhost/interviewQuest/utilities.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send(variables);
+    document.getElementById("errorcode").innerHTML="Attempting Login...";
+    disableButtonsLoading();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             var response = xmlhttp.responseText;//gets response output
             if (response === "1") { //false
                 document.getElementById("errorcode").innerHTML="Wrong Username or Password";
+                enableButtonsLoading();
             } else if (response === "0") {
-                window.location = 'http://localhost/InterviewQuest/index.php';
+                //change URL when changing to new platform
+                window.location = 'http://localhost/interviewQuest/index.php';
             }
         }
     }

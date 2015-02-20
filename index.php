@@ -13,14 +13,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Interview Quest</title>
-
+    
+    <!-- image for tab and favorite icon -->
+    <link rel="shortcut icon" type="image/ico" href="images/i.ico">
+      
+    <!-- This makes the site resizable -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/nstyles.css" rel="stylesheet"> 
+    <link href="css/styles.css" rel="stylesheet"> 
       
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,9 +32,12 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+      
   </head>
+    
   <body>
       <!-- Container that will hold all content so that elements get bootstrap css -->
+    <!-- Start Header -->
     <div class="container">
       <div class="header">
         <nav>
@@ -47,9 +54,11 @@
               ?>
           </ul>
         </nav>
-          <img src="images/indexLogoInline.png" id="logoimg">
+          <a href="#"><img src="images/indexLogoInline.png" id="logoimg"></a>
       </div>
-    </div>
+    </div> <!-- End Header -->
+    
+    <!-- Start Content Area -->
     <div class="container">
         <br />
         <!-- start logo -->    
@@ -64,7 +73,7 @@
         <a href="about.php" class="btn" id="greenbutton">About</a>
       </div>
     </footer>
-    </div>
+    </div> <!-- End Content Area -->
         
         <!-- Start Login Modal -->
 		<div class="modal fade" id="login" role="dialog" data-keyboard="false" data-backdrop="static">
@@ -89,16 +98,16 @@
 							</div>
 							
 							<div class="form-group">
-								<div class="col-lg-10 text-center">
-									<a class="btn btn-primary" onclick="attemptLogin()">Login</a>
-									<div >
-										<h6 id="errorcode" color="red"></h6>
+								<div class="col-sm-12 text-center">
+									<a id="loginButton" class="btn btn-primary" onclick="attemptLogin()">Login</a>
+									<div class="haserror">
+										<h6 id="errorcode"></h6>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="modal-footer">
-							<a class="btn btn-warning" data-dismiss="modal">Cancel</a>
+							<a id="cancelButton" class="btn btn-warning" data-dismiss="modal">Cancel</a>
 						</div>
 					</form>
 				</div>

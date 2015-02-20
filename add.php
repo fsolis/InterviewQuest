@@ -14,7 +14,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Interview Quest: Add</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- image for tab and favorite icon -->
+    <link rel="shortcut icon" type="image/ico" href="images/i.ico">
+    
+    <!-- allow resizing -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -28,30 +32,31 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+      
   </head>
   <body>
+    <!-- Start navigation bar -->
+      <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+              <?php
+                if(isset($_SESSION['loggedin'])){
+                    echo "<li><a id=\"greenText\">Hello, ". $_SESSION['firstName']."</a></li>";
+                    echo "<li><a href=\"logout.php\" class=\"btn\" id=\"greenbutton\">Sign Out</a></li>";
+                } else {
+                    echo "<li><a  href=\"index.php\" class=\"btn\" id=\"greenbutton\">Home</a></li>";
+                    echo "<li><a href=\"signup.php\"  class=\"btn\" id=\"greenbutton\">Sign Up</a></li>";
+                }
+
+              ?>
+          </ul>
+        </nav>
+          <a href="index.php" ><img src="images/indexLogoInline.png" id="logoimg"></a>
+      </div>
+    </div> <!-- End navigation bar -->
     <!-- Main container for content so that bootstrap is applied to elements -->
     <div class="container"> 
-      <!-- Navagation bar -->
-      <div id="navbar">
-          <div id="navbar-left">
-            <a href="index.php"><img id="navbarlogo" src="images/indexLogo.png"></a>
-          </div>
-          <div id="navbar-right">
-            <?php
-                //This will display user's name and signout button if logged in 
-                //otherwise it will redirect the user to the index page as only 
-                //questions can be submitted if logged in
-                if(isset($_SESSION['loggedin'])){
-                    echo " Welcome, ".$_SESSION['firstName'];
-                    echo "<a href=\"logout.php\"><button type=\"button\" id=\"greenbutton\" class=\"btn btn-default btn-lg\"> Sign Out</button></a>";
-                } else {
-                    header("Location: index.php");
-               }
-            ?>
-          </div>
-      </div> <!-- End Navigation bar -->
-        
       <br/>
       <!-- main page content -->
       <div id="addquestioncontent"> 
@@ -118,7 +123,9 @@
                   <br />
                   <p id="errorcodeQuestions" class="haserror"></p>
                   <br />
-                  <a type="button" class="btn btn-primary" onclick="submitSingleAnswer()">Submit</a>
+                  <div class="center">
+                    <a type="button" class="btn btn-primary" onclick="submitSingleAnswer()">Submit</a>
+                  </div>
               </div> <!-- End single answer form -->
           
               <!-- Start Multiple Choice Form -->
@@ -154,7 +161,9 @@
                   <br />
                   <p id="multipleChoiceError" class="haserror"></p>
                   <br />
-                  <a type="button" class="btn btn-primary" onclick="submitMultipleChoice()">Submit</a>
+                  <div class="center">
+                    <a type="button" class="btn btn-primary" onclick="submitMultipleChoice()">Submit</a>
+                  </div>
               </div> <!-- End multiple choice form -->
           
                <!-- Start Multiple Answer Form -->
@@ -191,15 +200,20 @@
                   <br /> 
                   <p id="multipleAnswerError" class="haserror"></p>
                   <br />
-                  <a type="button" class="btn btn-primary" onclick="submitMultipleAnswer()">Submit</a>
+                  <div class="center">
+                    <a type="button" class="btn btn-primary" onclick="submitMultipleAnswer()">Submit</a>
+                  </div>
               </div>
             
       </div> <!-- End multiple answer form -->
     
-      <!-- start footer -->
-      <div id="signupfooter">
-            <a href="about.php"type="button" id="aboutbutton" class="btn btn-default btn-lg">About</a>
-      </div> <!--End footer -->
+      <br /> <br />
+      <!-- Start footer -->
+      <footer class="footer">
+      <div class="container">
+        <a href="about.php" class="btn" id="greenbutton">About</a>
+      </div>
+    </footer> <!-- End footer -->
         
       <!-- Start add language modal -->    
       <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true" id="addLanguageModal" data-keyboard="false" data-backdrop="static">
