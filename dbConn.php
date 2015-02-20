@@ -4,8 +4,8 @@
     //This file connects to the proper sql table and database
     $host = "localhost";
     $dbName = "InterviewQuest"; 
-    $username = "fsolis"; 
-    $pwd = "apple117";
+    $username = ""; 
+    $pwd = "";
 
     //creates connection
     $dbConn = new PDO("mysql:host=".$host.";dbname=".$dbName, $username, $pwd);
