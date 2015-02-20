@@ -59,6 +59,15 @@ For the initial version it will be running on Ubuntu 14.10.
 *( You should see a message that says 'Your PHP installation is working fine.')
 *( If this is not shown there have been errors in the PHP installation)
 
+##### PHPMYADMIN #####
+
+* After installing phpmyadmin edit apache config file to display phpmyadmin
+* sudo nano /etc/apache2/apache2.conf
+* add the folowing line to this file then save it
+* Include /etc/phpmyadmin/apache.conf
+* once saved restart apache server
+* sudo service apache2 restart
+
 ##Set Up Script ##
 * A script can be found in the resources folder named webServerSetupScript.
 * To run this script. Enter the following commands:
