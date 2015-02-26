@@ -132,16 +132,84 @@
       <footer class="footer">
       <div class="container">
         <a href="https://github.com/fsolis/InterviewQuest" class="btn" id="githubButton">Join Github Project</a>
-        <a class="btn" id="greenbutton">Contact Creator</a>
+        <a class="btn" href="#contact" data-toggle="modal" id="greenbutton">Contact Creator</a>
       </div>
     </footer> <!-- End footer -->
     </div> <!--end container -->
       
+      <!-- Start Contact Modal -->
+		<div class="modal fade" id="contact" role="dialog" data-keyboard="false" data-backdrop="static">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form class="form-horizontal">
+						<div class="modal-header">
+							<h3>Contact:</h3>
+						</div>
+						<div class="modal-body">
+							<div class="form-group" id="center">
+								<div class="col-lg-12" >
+									<input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+								</div>
+							</div>
+							<div class="form-group" id="center">
+								<div class="col-lg-12">
+									<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+								</div>
+							</div>
+                            <div class="form-group" id="center">
+								<div class="col-lg-12">
+									<input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+								</div>
+							</div>
+                            <div class="form-group" id="center">
+								<div class="col-lg-12">
+                                    <textarea class="form-control" rows="3" id="comments" name="comments" placeholder="Comments"></textarea>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-sm-12 text-center">
+									<a id="contactSubmit" class="btn btn-primary" onclick="attemptContact()">Send</a>
+									<div class="haserror">
+										<h6 id="errorcode"></h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<a id="cancelButton" class="btn btn-warning" data-dismiss="modal">Cancel</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- End Contact Modal -->
+      
+      <!-- Start Feedback Modal -->
+      <div class="modal fade" id="feedback" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <h3>Contact:</h3>
+                    </div>
+                    <div class="modal-body">
+                        <h4 id="feedbackText"></h4>
+                    </div>
+                    <div class="modal-footer">
+				        <a id="cancelButton2" class="btn btn-warning" data-dismiss="modal">OK</a>
+				    </div>
+                </form>
+            </div>
+          </div>
+      </div>
+      <!-- End Feedback Modal -->
       
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/about.js"></script>
   </body>
 </html>

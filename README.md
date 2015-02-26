@@ -68,6 +68,11 @@ For the initial version it will be running on Ubuntu 14.10.
 * once saved restart apache server
 * sudo service apache2 restart
 
+##### sendmail #####
+* to use the php method mail() to send mail please install 
+* sendmail program. to do this run the following line
+* sudo apt-get install sendmail
+
 ##Set Up Script ##
 * A script can be found in the resources folder named webServerSetupScript.
 * To run this script. Enter the following commands:
